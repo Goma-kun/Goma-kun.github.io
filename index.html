@@ -113,7 +113,7 @@ footer a{color:var(--fg-dim)}
     <p class="brand">NISHIRA</p>
     <h1>現場の困りごとを、AIを使って動くツールにしています。</h1>
     <p class="lede">コールセンター／ヘルプデスクの現場で10年以上働くなかで見つけた「手作業で消えている時間」を、Chrome拡張機能・Google Apps Script・デスクトップアプリとして形にしてきました。</p>
-    <p class="lede">プログラミングは専門ではありません。要件定義から実装・デバッグ・Chrome ウェブストアの審査通過までを、生成AIとの対話で一人で完遂しています。公開中の拡張機能は3本です。</p>
+    <p class="lede">プログラミングは専門ではありません。何を作るかを決めるところから、動くように直して Chrome ウェブストアの審査を通すところまで、AIと相談しながら一人で進めています。公開中の拡張機能は3本です。</p>
   </div>
 </header>
 
@@ -121,7 +121,7 @@ footer a{color:var(--fg-dim)}
   <div class="wrap">
     <h2>Published</h2>
     <p class="h2ja">Chrome ウェブストアで公開中の拡張機能</p>
-    <p class="sectnote">いずれも Google の審査を通過し、誰でもインストールできる状態で公開しています。ソースコードは全て GitHub で公開（Apache License 2.0）。</p>
+    <p class="sectnote">いずれも Google の審査を通過し、誰でもインストールできる状態で公開しています。中身のコードも GitHub ですべて公開しています（仕事で使っても構わない、制限のないライセンスにしています）。</p>
 
     <div class="cards">
 
@@ -135,12 +135,12 @@ footer a{color:var(--fg-dim)}
         </div>
         <p>話した内容をその場で文字にして、生成AIが読める日本語に整えます。通話しながらのログ作成や、議事録・アイデアの書き留めに使えます。Chrome拡張のほか、iPhoneのSafariからも同じものが使えます。</p>
         <ul class="points">
-          <li>リアルタイム音声認識＋Gemini API による「清書」（話し言葉を読める文章に整形）</li>
-          <li>音声認識は11言語対応。表示は日本語のまま、聞き取る言語だけ切り替えられます</li>
-          <li>画面が消えても録音が止まらないよう、iOS Safari 固有の挙動に個別対応（23分連続動作を確認）</li>
-          <li>清書プロンプトへの指示混入（プロンプトインジェクション）対策を実装</li>
+          <li>話した内容をその場で文字にして、続けてAIが読みやすい文章に整えます</li>
+          <li>聞き取れる言語は11種類。画面の表示は日本語のまま、聞き取る言語だけを切り替えられます</li>
+          <li>iPhoneは画面が暗くなると録音が止まってしまうため、止まらずに続くようにしました（23分続けて動くところまで確認しています）</li>
+          <li>話した内容に「〜を教えて」のような言葉が入っていると、AIが文章を整えるのではなく質問に答えてしまうことがあったため、そうならないように直しました</li>
         </ul>
-        <div class="chips"><span class="chip">Chrome拡張 (MV3)</span><span class="chip">Gemini API</span><span class="chip">Cloudflare Workers</span><span class="chip">Web Speech API</span><span class="chip">i18n (ja/en)</span></div>
+        <div class="chips"><span class="chip">Chrome拡張</span><span class="chip">Gemini API</span><span class="chip">Cloudflare</span><span class="chip">音声認識</span><span class="chip">日本語・英語対応</span></div>
         <div class="links">
           <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/pnmjcgdobakecldppfhghdccblaoolla">Chrome ウェブストア</a>
           <a class="btn" href="https://mamorukun.jsphdn.workers.dev/">Web版を試す</a>
@@ -153,17 +153,17 @@ footer a{color:var(--fg-dim)}
           <img src="assets/smartshot.png" alt="SmartShotのアイコン">
           <div>
             <h3 class="card-title">SmartShot</h3>
-            <p class="card-sub">要素を狙って撮れるスクリーンショット拡張</p>
+            <p class="card-sub">撮りたいところに枠が吸い付くスクリーンショット拡張</p>
           </div>
         </div>
-        <p>マニュアルや手順書を作るときの「きれいに撮り直す」手間をなくすための拡張機能です。撮りたい部分にカーソルを合わせると、その要素の枠に自動で吸い付きます。撮った画像はそのままクリップボードに入ります。</p>
+        <p>マニュアルや手順書を作るときの「きれいに撮り直す」手間をなくすための拡張機能です。撮りたい部分にカーソルを合わせると、そのボタンや画像の枠にぴったり合わせて撮れます。撮った画像はそのままコピーされるので、貼り付けるだけで使えます。</p>
         <ul class="points">
-          <li>ページ上の全要素の辺を収集し、ドラッグ・リサイズ時に8pxで吸着（エッジスナップ）</li>
-          <li>要素の border-radius を読み取り、角丸をそのまま切り抜き</li>
-          <li>選択中にスクロールしても、選択を保ったまま撮り直して継続</li>
-          <li>撮影と同時にクリップボードへコピー（貼り付けるだけで使える）</li>
+          <li>範囲を動かすと、近くにある枠線に自動で吸い付きます。ぴったり合わせるために少しずつ動かす作業が要りません</li>
+          <li>角が丸いボタンやカードは、丸い形のまま切り抜きます</li>
+          <li>範囲を選んでいる途中でページをスクロールしても、選び直さずに続けられます</li>
+          <li>撮ると同時にコピーされます。「コピー」を押す手間がありません</li>
         </ul>
-        <div class="chips"><span class="chip">Chrome拡張 (MV3)</span><span class="chip">Canvas API</span><span class="chip">Clipboard API</span><span class="chip">DPR補正</span></div>
+        <div class="chips"><span class="chip">Chrome拡張</span><span class="chip">画像の切り抜き</span><span class="chip">自動コピー</span></div>
         <div class="links">
           <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nmngoggcedjnfcjfjkedmhlnnkpjdocf">Chrome ウェブストア</a>
           <a class="btn" href="https://github.com/Goma-kun/SmartShot-Extension">ソースコード</a>
@@ -175,17 +175,17 @@ footer a{color:var(--fg-dim)}
           <img src="assets/osamukun.png" alt="おさむくんのアイコン">
           <div>
             <h3 class="card-title">おさむくん</h3>
-            <p class="card-sub">定型文の検索・コピー ／ 完全オフライン動作</p>
+            <p class="card-sub">定型文の検索・コピー ／ インターネットに接続しません</p>
           </div>
         </div>
         <p>よく使う文章を登録しておいて、検索してすぐコピーできる拡張機能です。ブラウザのサイドパネルに常駐するので、メール画面を開いたまま横で探せます。コールセンターや事務職で、定型文をスプレッドシートで管理している現場を想定しました。</p>
         <ul class="points">
           <li>スプレッドシートの3列（カテゴリ／概要／本文）を選んで貼り付けるだけで一括登録。CSV・TSVファイルの読み込みにも対応</li>
-          <li>保存・追加・削除・インポートは、直前のひとつを取り消せる</li>
-          <li>要求する権限は sidePanel と storage の2つだけ。ページの読み取り権限は求めず、外部通信のコードを一行も含まない設計</li>
-          <li>キーボードだけで完結（↑↓で選択、Enterでコピー、Escでクリア）</li>
+          <li>保存・追加・削除・読み込みは、直前のひとつなら元に戻せます</li>
+          <li>この拡張機能が求める許可は「画面の横に表示すること」と「パソコンの中に保存すること」の2つだけです。開いているページの中身は読み取りませんし、インターネットに何かを送る仕組み自体を入れていません</li>
+          <li>キーボードだけで完結します（↑↓で選択、Enterでコピー、Escで消去）</li>
         </ul>
-        <div class="chips"><span class="chip">Chrome拡張 (MV3)</span><span class="chip">Side Panel API</span><span class="chip">chrome.storage</span><span class="chip">CSV/TSVパーサ</span><span class="chip">オフライン</span></div>
+        <div class="chips"><span class="chip">Chrome拡張</span><span class="chip">サイドパネル</span><span class="chip">端末内に保存</span><span class="chip">CSV・TSV読み込み</span><span class="chip">通信なし</span></div>
         <div class="links">
           <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/hhbldkmlimbjbjficjbdpnohallkledi">Chrome ウェブストア</a>
           <a class="btn" href="https://github.com/Goma-kun/osamukun">ソースコード</a>
@@ -205,36 +205,36 @@ footer a{color:var(--fg-dim)}
     <div class="work">
       <h3>ヘルプデスク業務自動化システム</h3>
       <dl>
-        <dt>課題</dt><dd>共有アカウントを複数名に委任して運用していたところ、同時操作が不正アクセスとして検知されアカウントロックが発生し、業務が止まっていた</dd>
-        <dt>解決</dt><dd>インストール可能なトリガーを応用し、「操作」は個人アカウント・「実行」は共有アカウントの権限で行う構成に。共有アカウントへの同時ログイン自体を不要にした</dd>
-        <dt>成果</dt><dd>ロックのリスクを根本から排除しつつ、対外的には代表アカウントとして振る舞う自動化フローを確立</dd>
+        <dt>課題</dt><dd>ヘルプデスク用のアカウントを複数人で共有していたところ、何人かが同時に使うとGoogleに不正アクセスと判断されてアカウントがロックされ、業務が止まっていた</dd>
+        <dt>解決</dt><dd>ボタンを押すのは各自のアカウント、実際の処理だけを共有アカウントが行う形に変更。共有アカウントに全員でログインする必要そのものをなくした</dd>
+        <dt>成果</dt><dd>ロックが起きなくなり、外から見たときは今までどおりヘルプデスクの代表アカウントとして届く状態を保てた</dd>
       </dl>
     </div>
 
     <div class="work">
-      <h3>データ連携転記支援ツール（サイドバーUI）</h3>
+      <h3>転記作業の支援ツール</h3>
       <dl>
-        <dt>課題</dt><dd>管理画面やDBからの手動転記によるミスと工数</dd>
-        <dt>解決</dt><dd>スプレッドシート上に HTML Service で独自の入力サイドバーを開発。TSV等の非構造データを解析し、自動抽出・整形して展開</dd>
-        <dt>成果</dt><dd>転記ミスをゼロに。非同期通信によるリアルタイムのステータス表示でUXを改善</dd>
+        <dt>課題</dt><dd>管理画面やデータベースの内容を人が見ながらスプレッドシートに打ち直しており、時間がかかるうえ打ち間違いも起きていた</dd>
+        <dt>解決</dt><dd>スプレッドシートの横に入力欄を用意し、コピーしてきた文字列を貼り付けると、必要な項目を自動で取り出して所定の場所に振り分けるようにした</dd>
+        <dt>成果</dt><dd>打ち直しがなくなり、転記ミスもなくなった。処理中は画面に進み具合が出るので、動いているかどうかで迷わない</dd>
       </dl>
     </div>
 
     <div class="work">
       <h3>対応履歴作成・テンプレート自動生成ツール</h3>
       <dl>
-        <dt>課題</dt><dd>オペレーターのスキル差によるログ品質のばらつきと記入漏れ</dd>
-        <dt>解決</dt><dd>問い合わせ種別に応じて確認項目テンプレートを動的に生成。ユーザー情報を解析し定型フォーマットへマッピング</dd>
-        <dt>成果</dt><dd>必須項目をシステム側から提示して属人化を解消。管理用プレフィックスの自動付与で検索性・集計効率が向上</dd>
+        <dt>課題</dt><dd>対応履歴の書き方が人によって違い、聞くべきことの抜け漏れも起きていた</dd>
+        <dt>解決</dt><dd>問い合わせの種類を選ぶと、その場合に確認すべき項目が並んだ雛形が自動で出るようにした</dd>
+        <dt>成果</dt><dd>何を書けばいいかが画面に出るので、慣れている人とそうでない人の差が小さくなった。決まった見出しが頭に付くので、後から探すのも集計するのも楽になった</dd>
       </dl>
     </div>
 
     <div class="work">
       <h3>カレンダー連携型 日程調整支援ツール</h3>
       <dl>
-        <dt>課題</dt><dd>アカウントの管理権限が他部署にあり、API連携に必要な認証情報が得られない環境で、日程調整メールの作成と空き確認を手作業で行っていた</dd>
-        <dt>解決</dt><dd>「送信権限がない」という制約を前提に、メール文面の下書き生成とカレンダーの仮押さえまでを自動化する半自動フローを構築</dd>
-        <dt>成果</dt><dd>組織のセキュリティポリシーと権限の壁を越えずに、手作業の工程を大きく削減</dd>
+        <dt>課題</dt><dd>メールアカウントの管理権限が他部署にあり、こちらから自動でメールを送ることができない環境だった。そのため日程調整のメール作成も、カレンダーの空き確認も、すべて手作業だった</dd>
+        <dt>解決</dt><dd>自動で送るのは諦めて、その手前まで——メールの下書きを作るところと、カレンダーの空き枠を押さえるところまで——を自動にした。送信だけは人が押す形にした</dd>
+        <dt>成果</dt><dd>権限のルールはそのままに、手作業の工程を大きく減らせた</dd>
       </dl>
     </div>
   </div>
@@ -247,12 +247,12 @@ footer a{color:var(--fg-dim)}
     <p class="sectnote">個人PCで開発した Python デスクトップアプリ（Windows／Mac対応）。</p>
 
     <div class="work">
-      <h3>通話の可視化と解決策提示をワンストップで</h3>
+      <h3>通話中に困ったことを、その場でAIに聞ける</h3>
       <dl>
-        <dt>目的</dt><dd>コールセンター業務における保留時間の短縮とログ作成負荷の軽減</dd>
-        <dt>構成</dt><dd>Python / CustomTkinter（UI）/ threading（非同期処理）、Google Cloud Speech-to-Text、Gemini API</dd>
-        <dt>機能</dt><dd>リアルタイム文字起こし、エラー画面のスクリーンショットをAIが解析して解決策を提示、通話後に「要約・対応内容・Next Action」を指定フォーマットで自動生成</dd>
-        <dt>設計</dt><dd>個人情報保護の観点から、取得するのはオペレーター自身の音声のみ。入力ソースを物理的に分離し、顧客の音声が外部AIへ送られない構成にしている</dd>
+        <dt>目的</dt><dd>電話を保留にして調べる時間を短くすることと、通話後のログ作成を楽にすること</dd>
+        <dt>使ったもの</dt><dd>Python、Googleの音声認識、Gemini API</dd>
+        <dt>できること</dt><dd>話しながら文字にする／エラー画面を撮って貼ると、AIが読んで対処を出してくれる／通話が終わったら「要約・対応内容・次にやること」を決まった形で自動的に書き出す</dd>
+        <dt>気をつけたこと</dt><dd>お客様の声は最初から取り込まない作りにしています。マイクの取り込み口を分けてあるので、自分が話した内容だけがAIに渡ります</dd>
       </dl>
     </div>
   </div>
@@ -262,9 +262,9 @@ footer a{color:var(--fg-dim)}
   <div class="wrap">
     <h2>Approach</h2>
     <p class="h2ja">開発の進め方について</p>
-    <p>ここに挙げたツールは、私がプログラミング言語を学んで書いたものではありません。現場で困っていることをAIに説明し、対話しながら要件を固め、実装とデバッグを進めています。</p>
-    <p>ただ、<strong>動くところまで持っていくのは「AIに頼めば済む」という話ではありませんでした。</strong>Chrome ウェブストアの審査には単一目的の説明と権限の正当化が要りますし、iOS Safari が画面消灯時に返す非標準エラーも、CSVのBOMの扱いも、実機で踏んで一つずつ潰しています。仕様を決め、詰まった箇所を切り分け、直ったことを確かめる——その判断の部分は自分でやっています。</p>
-    <p>ノンプログラマーでも、現場を知っていればここまで作れる。その実証として見ていただければ幸いです。</p>
+    <p>ここに挙げたツールは、私がプログラミング言語を学んで書いたものではありません。現場で困っていることをAIに説明し、話しながら「何を作るか」を決めて、作ってもらったものを試しては直す、という進め方をしています。細かい仕組みの部分はAIに出してもらっており、専門的な中身まで私の言葉で説明できるわけではありません。</p>
+    <p>ただ、<strong>実際に使えるところまで持っていくのは「AIに頼めば済む」という話ではありませんでした。</strong>Chrome ウェブストアの審査は、「この拡張機能は何のためのものか」「なぜその許可が必要か」を説明できないと通りません。iPhoneで画面が暗くなると録音が止まってしまう、書き出したファイルをExcelで開くと文字化けする——そういう問題も、実際に使いながら一つずつ直しています。</p>
+    <p>何を作るかを決めて、どこで困っているかを切り分けて、直ったことを確かめる。その部分は自分でやっています。現場を知っていればここまで作れる、という例として見ていただければ幸いです。</p>
   </div>
 </section>
 
