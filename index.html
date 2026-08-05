@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nishira — AI活用による業務改善ツール開発</title>
-<meta name="description" content="AIを活用して開発・公開しているChrome拡張機能と業務効率化ツールの一覧。Chrome ウェブストア公開3本、Google Apps Script による業務自動化、Python/生成AI デスクトップアプリ。">
-<meta property="og:title" content="Nishira — AI活用による業務改善ツール開発">
-<meta property="og:description" content="Chrome ウェブストア公開3本、GAS 業務自動化、Python/生成AI デスクトップアプリ。">
+<title>Nishira — AI 活用による業務改善ツール開発</title>
+<meta name="description" content="AI を活用して開発・公開している Chrome 拡張機能と業務効率化ツールの一覧。Chrome ウェブストア公開3本、Google Apps Script による業務自動化、Python/生成 AI デスクトップアプリ。">
+<meta property="og:title" content="Nishira — AI 活用による業務改善ツール開発">
+<meta property="og:description" content="Chrome ウェブストア公開3本、GAS 業務自動化、Python/生成 AI デスクトップアプリ。">
 <meta property="og:type" content="website">
 <style>
 :root{
@@ -16,7 +16,7 @@
 }
 @media (prefers-color-scheme:dark){
   :root{
-    --bg:#16151a; --bg-card:#1e1d23; --fg:#eceaf0; --fg-mid:#b6b2bd; --fg-dim:#8a8593;
+    --bg:#16151a; --bg-card:#1e1d23; --fg:#eceaf0; --fg-mid:#d2ced9; --fg-dim:#8a8593;
     --line:#302e38; --accent:#f0995c; --accent-soft:#2a2028; --chip:#2a2830;
     --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.6);
   }
@@ -27,7 +27,7 @@
   --shadow:0 1px 2px rgba(28,27,25,.05),0 8px 24px -12px rgba(28,27,25,.14);
 }
 :root[data-theme="dark"]{
-  --bg:#16151a; --bg-card:#1e1d23; --fg:#eceaf0; --fg-mid:#b6b2bd; --fg-dim:#8a8593;
+  --bg:#16151a; --bg-card:#1e1d23; --fg:#eceaf0; --fg-mid:#d2ced9; --fg-dim:#8a8593;
   --line:#302e38; --accent:#f0995c; --accent-soft:#2a2028; --chip:#2a2830;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.6);
 }
@@ -85,8 +85,8 @@ h2{font-size:13px; letter-spacing:.16em; color:var(--fg-dim); font-weight:600; m
 .work{border-left:2px solid var(--line); padding:0 0 4px 22px; margin-bottom:30px}
 .work:last-child{margin-bottom:0}
 .work h3{margin:0 0 10px; font-size:17px; font-weight:700}
-.work dl{margin:0; display:grid; grid-template-columns:4.5em 1fr; gap:5px 14px; font-size:14.5px}
-.work dt{color:var(--fg-dim); font-weight:600}
+.work dl{margin:0; display:grid; grid-template-columns:minmax(4.5em,max-content) 1fr; gap:5px 14px; font-size:14.5px}
+.work dt{color:var(--fg-dim); font-weight:600; white-space:nowrap}
 .work dd{margin:0; color:var(--fg-mid)}
 
 /* stance */
@@ -111,9 +111,9 @@ footer a{color:var(--fg-dim)}
 <header>
   <div class="wrap">
     <p class="brand">NISHIRA</p>
-    <h1>現場の困りごとを、AIを使って動くツールにしています。</h1>
-    <p class="lede">コールセンター／ヘルプデスクの現場で10年以上働くなかで見つけた「手作業で消えている時間」を、Chrome拡張機能・Google Apps Script・AIアシスタント・デスクトップアプリとして形にしてきました。</p>
-    <p class="lede">プログラミングは専門ではありません。何を作るかを決めるところから、動くように直して Chrome ウェブストアの審査を通すところまで、AIと相談しながら一人で進めています。公開中の拡張機能は3本です。</p>
+    <h1>現場の困りごとを、AI を使って動くツールにしています。</h1>
+    <p class="lede">コールセンター／ヘルプデスクの現場で10年以上働くなかで見つけた「手作業で消えている時間」を、Chrome 拡張機能・Google Apps Script・AI アシスタント・デスクトップアプリとして形にしてきました。</p>
+    <p class="lede">何を作るかを決めるところから、動くように直して Chrome ウェブストアの審査を通すところまで、AI と相談しながら一人で進めています。公開中の拡張機能は3本です。</p>
   </div>
 </header>
 
@@ -130,20 +130,20 @@ footer a{color:var(--fg-dim)}
           <img src="assets/mamorukun.png" alt="まもるくんのアイコン">
           <div>
             <h3 class="card-title">まもるくん</h3>
-            <p class="card-sub">AI音声書き起こし・ログ作成ツール ／ Chrome拡張・Web・iPhone対応</p>
+            <p class="card-sub">AI 音声書き起こし・ログ作成ツール ／ Chrome 拡張・Web・iPhone 対応</p>
           </div>
         </div>
-        <p>通話しながらのログ作成や、議事録・アイデアの書き留めに使う道具です。Chrome拡張のほか、iPhoneのSafariからも同じものが使えます。</p>
+        <p>通話しながらのログ作成や、議事録・アイデアの書き留めに使う道具です。Chrome 拡張のほか、iPhone の Safari からも同じものが使えます。</p>
         <ul class="points">
-          <li>話した内容をその場で文字にして、続けてAIが読みやすい文章に整えます</li>
+          <li>話した内容をその場で文字にして、続けて AI が読みやすい文章に整えます</li>
           <li>聞き取れる言語は11種類。画面の表示は日本語のまま、聞き取る言語だけを切り替えられます</li>
-          <li>iPhoneは画面が暗くなると録音が止まってしまうため、止まらずに続くようにしました（23分続けて動くところまで確認しています）</li>
-          <li>話した内容に「〜を教えて」のような言葉が入っていると、AIが文章を整えるのではなく質問に答えてしまうことがあったため、そうならないように直しました</li>
+          <li>iPhone は画面が暗くなると録音が止まってしまうため、止まらずに続くようにしました（23分続けて動くところまで確認しています）</li>
+          <li>話した内容に「〜を教えて」のような言葉が入っていると、AI が文章を整えるのではなく質問に答えてしまうことがあったため、そうならないように直しました</li>
         </ul>
-        <div class="chips"><span class="chip">Chrome拡張</span><span class="chip">Gemini API</span><span class="chip">Cloudflare</span><span class="chip">音声認識</span><span class="chip">日本語・英語対応</span></div>
+        <div class="chips"><span class="chip">Chrome 拡張</span><span class="chip">Gemini API</span><span class="chip">Cloudflare</span><span class="chip">音声認識</span><span class="chip">日本語・英語対応</span></div>
         <div class="links">
           <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/pnmjcgdobakecldppfhghdccblaoolla" target="_blank" rel="noopener noreferrer">Chrome ウェブストア</a>
-          <a class="btn" href="https://mamorukun.jsphdn.workers.dev/" target="_blank" rel="noopener noreferrer">Web版を試す</a>
+          <a class="btn" href="https://mamorukun.jsphdn.workers.dev/" target="_blank" rel="noopener noreferrer">Web 版を試す</a>
           <a class="btn" href="https://github.com/Goma-kun/mamorukun" target="_blank" rel="noopener noreferrer">ソースコード</a>
         </div>
       </article>
@@ -164,7 +164,7 @@ footer a{color:var(--fg-dim)}
           <li>撮ると同時にコピーされます。「コピー」を押す手間がありません</li>
           <li>撮ったあとの動きを選べます。「コピーだけ」にすると、保存先を聞く画面が出ないので、撮ってそのまま貼り付けられます。あとから残したい人は「コピーして保存」も選べます</li>
         </ul>
-        <div class="chips"><span class="chip">Chrome拡張</span><span class="chip">画像の切り抜き</span><span class="chip">自動コピー</span><span class="chip">保存方法を選択</span></div>
+        <div class="chips"><span class="chip">Chrome 拡張</span><span class="chip">画像の切り抜き</span><span class="chip">自動コピー</span><span class="chip">保存方法を選択</span></div>
         <div class="links">
           <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/dpnopohdhjdelkjccfdmmbancjckkfhn" target="_blank" rel="noopener noreferrer">Chrome ウェブストア</a>
           <a class="btn" href="https://github.com/Goma-kun/SmartShot-Extension" target="_blank" rel="noopener noreferrer">ソースコード</a>
@@ -181,12 +181,12 @@ footer a{color:var(--fg-dim)}
         </div>
         <p>よく使う文章を登録しておいて、検索してすぐコピーできる拡張機能です。ブラウザのサイドパネルに常駐するので、メール画面を開いたまま横で探せます。コールセンターや事務職で、定型文をスプレッドシートで管理している現場を想定しました。</p>
         <ul class="points">
-          <li>スプレッドシートの3列（カテゴリ／概要／本文）を選んで貼り付けるだけで一括登録。CSV・TSVファイルの読み込みにも対応</li>
+          <li>スプレッドシートの3列（カテゴリ／概要／本文）を選んで貼り付けるだけで一括登録。CSV・TSV ファイルの読み込みにも対応</li>
           <li>保存・追加・削除・読み込みは、直前のひとつなら元に戻せます</li>
           <li>この拡張機能が求める許可は「画面の横に表示すること」と「パソコンの中に保存すること」の2つだけです。開いているページの中身は読み取りませんし、インターネットに何かを送る仕組み自体を入れていません</li>
-          <li>キーボードだけで完結します（↑↓で選択、Enterでコピー、Escで消去）</li>
+          <li>キーボードだけで完結します（↑↓で選択、Enter でコピー、Esc で消去）</li>
         </ul>
-        <div class="chips"><span class="chip">Chrome拡張</span><span class="chip">サイドパネル</span><span class="chip">端末内に保存</span><span class="chip">CSV・TSV読み込み</span><span class="chip">通信なし</span></div>
+        <div class="chips"><span class="chip">Chrome 拡張</span><span class="chip">サイドパネル</span><span class="chip">端末内に保存</span><span class="chip">CSV・TSV 読み込み</span><span class="chip">通信なし</span></div>
         <div class="links">
           <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/hhbldkmlimbjbjficjbdpnohallkledi" target="_blank" rel="noopener noreferrer">Chrome ウェブストア</a>
           <a class="btn" href="https://github.com/Goma-kun/osamukun" target="_blank" rel="noopener noreferrer">ソースコード</a>
@@ -206,7 +206,7 @@ footer a{color:var(--fg-dim)}
     <div class="work">
       <h3>ヘルプデスク業務自動化システム</h3>
       <dl>
-        <dt>課題</dt><dd>ヘルプデスク用のアカウントを複数人で共有していたところ、何人かが同時に使うとGoogleに不正アクセスと判断されてアカウントがロックされ、業務が止まっていた</dd>
+        <dt>課題</dt><dd>ヘルプデスク用のアカウントを複数人で共有していたところ、何人かが同時に使うと Google に不正アクセスと判断されてアカウントがロックされ、業務が止まっていた</dd>
         <dt>解決</dt><dd>ボタンを押すのは各自のアカウント、実際の処理だけを共有アカウントが行う形に変更。共有アカウントに全員でログインする必要そのものをなくした</dd>
         <dt>成果</dt><dd>ロックが起きなくなり、外から見たときは今までどおりヘルプデスクの代表アカウントとして届く状態を保てた</dd>
       </dl>
@@ -244,7 +244,7 @@ footer a{color:var(--fg-dim)}
 <section>
   <div class="wrap">
     <h2>AI Assistants</h2>
-    <p class="h2ja">業務用に作ったAIアシスタント（Gemini の Gem）</p>
+    <p class="h2ja">業務用に作った AI アシスタント（Gemini の Gem）</p>
     <p class="sectnote">Gemini には、目的ごとに指示文をあらかじめ用意しておける「Gem」という仕組みがあります。現場でよく発生する作業に合わせて指示文を組み、その場で使えるアシスタントとして配ったものです。こちらも就業先の業務環境で作成・運用しているため、課題と解決方針のみ記載しています。</p>
 
     <div class="work">
@@ -269,7 +269,7 @@ footer a{color:var(--fg-dim)}
       <h3>チャットの記録をナレッジにするアシスタント</h3>
       <dl>
         <dt>課題</dt><dd>Google チャットでやり取りされた対応方法やトラブルの知見が、そのまま流れて消えていた。あとで使える形にまとめ直すには手作業が必要だった</dd>
-        <dt>解決</dt><dd>チャットのやり取りを貼り付けると、「対象となる条件」「起きたこと」「対応の手順」に分けた文書の形で出てくるようにした。@メンションは氏名に置き換える。あとで NotebookLM に読み込ませて検索する前提なので、AIが迷わず拾える素直な構成にしてある</dd>
+        <dt>解決</dt><dd>チャットのやり取りを貼り付けると、「対象となる条件」「起きたこと」「対応の手順」に分けた文書の形で出てくるようにした。@メンションは氏名に置き換える。あとで NotebookLM に読み込ませて検索する前提なので、AI が迷わず拾える素直な構成にしてある</dd>
         <dt>成果</dt><dd>「出力しました」のような前置きを書かせず、最初から最後までひと続きで出るようにしたので、コピーを1回押すだけで終わる。発信者と日付を自動で拾って末尾に残すため、いつの情報かが分かる</dd>
       </dl>
     </div>
@@ -279,16 +279,16 @@ footer a{color:var(--fg-dim)}
 <section>
   <div class="wrap">
     <h2>Desktop</h2>
-    <p class="h2ja">ヘルプデスク業務支援・AI議事録アシスタント</p>
-    <p class="sectnote">個人PCで開発した Python デスクトップアプリ（Windows／Mac対応）。</p>
+    <p class="h2ja">ヘルプデスク業務支援・AI 議事録アシスタント</p>
+    <p class="sectnote">個人 PC で開発した Python デスクトップアプリ（Windows／Mac 対応）。</p>
 
     <div class="work">
-      <h3>通話中に困ったことを、その場でAIに聞ける</h3>
+      <h3>通話中に困ったことを、その場で AI に聞ける</h3>
       <dl>
         <dt>目的</dt><dd>電話を保留にして調べる時間を短くすることと、通話後のログ作成を楽にすること</dd>
-        <dt>使ったもの</dt><dd>Python、Googleの音声認識、Gemini API</dd>
-        <dt>できること</dt><dd>話しながら文字にする／エラー画面を撮って貼ると、AIが読んで対処を出してくれる／通話が終わったら「要約・対応内容・次にやること」を決まった形で自動的に書き出す</dd>
-        <dt>気をつけたこと</dt><dd>お客様の声は最初から取り込まない作りにしています。マイクの取り込み口を分けてあるので、自分が話した内容だけがAIに渡ります</dd>
+        <dt>使ったもの</dt><dd>Python、Google の音声認識、Gemini API</dd>
+        <dt>できること</dt><dd>話しながら文字にする／エラー画面を撮って貼ると、AI が読んで対処を出してくれる／通話が終わったら「要約・対応内容・次にやること」を決まった形で自動的に書き出す</dd>
+        <dt>気をつけたこと</dt><dd>お客様の声は最初から取り込まない作りにしています。マイクの取り込み口を分けてあるので、自分が話した内容だけが AI に渡ります</dd>
       </dl>
     </div>
   </div>
@@ -298,8 +298,8 @@ footer a{color:var(--fg-dim)}
   <div class="wrap">
     <h2>Approach</h2>
     <p class="h2ja">開発の進め方について</p>
-    <p>ここに挙げたツールは、私がプログラミング言語を学んで書いたものではありません。現場で困っていることをAIに説明し、話しながら「何を作るか」を決めて、作ってもらったものを試しては直す、という進め方をしています。細かい仕組みの部分はAIに出してもらっており、専門的な中身まで私の言葉で説明できるわけではありません。</p>
-    <p>ただ、<strong>実際に使えるところまで持っていくのは「AIに頼めば済む」という話ではありませんでした。</strong>Chrome ウェブストアの審査は、「この拡張機能は何のためのものか」「なぜその許可が必要か」を説明できないと通りません。iPhoneで画面が暗くなると録音が止まってしまう、書き出したファイルをExcelで開くと文字化けする——そういう問題も、実際に使いながら一つずつ直しています。</p>
+    <p>プログラミングは専門ではありません。ここに挙げたツールは、私がプログラミング言語を学んで書いたものではありません。現場で困っていることを AI に説明し、話しながら「何を作るか」を決めて、作ってもらったものを試しては直す、という進め方をしています。細かい仕組みの部分は AI に出してもらっており、専門的な中身まで私の言葉で説明できるわけではありません。</p>
+    <p>ただ、<strong>実際に使えるところまで持っていくのは「AI に頼めば済む」という話ではありませんでした。</strong>Chrome ウェブストアの審査は、「この拡張機能は何のためのものか」「なぜその許可が必要か」を説明できないと通りません。iPhone で画面が暗くなると録音が止まってしまう、書き出したファイルを Excel で開くと文字化けする——そういう問題も、実際に使いながら一つずつ直しています。</p>
     <p>何を作るかを決めて、どこで困っているかを切り分けて、直ったことを確かめる。その部分は自分でやっています。現場を知っていればここまで作れる、という例として見ていただければ幸いです。</p>
   </div>
 </section>
@@ -307,7 +307,7 @@ footer a{color:var(--fg-dim)}
 <footer>
   <div class="wrap">
     <p class="updated">最終更新：2026年8月</p>
-    <p>Nishira ／ お問い合わせは各リポジトリの <a href="https://github.com/Goma-kun" target="_blank" rel="noopener noreferrer">GitHub</a> まで</p>
+    <p>Nishira ／ お問い合わせ：<a href="mailto:info@nishira.jp">info@nishira.jp</a> ／ <a href="https://github.com/Goma-kun" target="_blank" rel="noopener noreferrer">GitHub</a></p>
   </div>
 </footer>
 
