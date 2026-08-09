@@ -93,6 +93,9 @@ h2{font-size:13px; letter-spacing:.16em; color:var(--fg-dim); font-weight:600; m
 /* stance */
 .stance p{color:var(--fg-mid); font-size:15px; max-width:44em}
 .stance strong{color:var(--fg); font-weight:600}
+.stance dl{margin:14px 0 0; display:grid; grid-template-columns:minmax(9.5em,max-content) 1fr; gap:6px 14px; font-size:14.5px; max-width:44em}
+.stance dt{color:var(--fg-dim); font-weight:600}
+.stance dd{margin:0; color:var(--fg-mid)}
 
 footer{padding:44px 0 64px; color:var(--fg-dim); font-size:13.5px}
 footer a{color:var(--fg-dim)}
@@ -103,6 +106,8 @@ footer a{color:var(--fg-dim)}
   section{padding:44px 0}
   .card{padding:22px}
   .work dl{grid-template-columns:1fr; gap:2px}
+  .stance dl{grid-template-columns:1fr; gap:2px}
+  .stance dt{margin-top:8px}
   .work dt{margin-top:8px}
 }
 </style>
@@ -114,7 +119,7 @@ footer a{color:var(--fg-dim)}
     <p class="brand">NISHIRA</p>
     <h1>現場の困りごとを、AI を使って動くツールにしています。</h1>
     <p class="lede">コールセンター／ヘルプデスクの現場で10年以上働くなかで見つけた、手作業で消えてしまう時間を、Chrome 拡張機能・Google Apps Script・AI アシスタント・デスクトップアプリとして形にしてきました。</p>
-    <p class="lede">何を作るかを決めるところから、動くように直して Chrome ウェブストアの審査を通すところまで、AI と相談しながら一人で進めています。公開中の拡張機能は3本です。</p>
+    <p class="lede">何を作るかを決めるところから、動くように直して Chrome ウェブストアの審査を通すところまで、Claude Code を中心に AI と相談しながら一人で進めています。公開中の拡張機能は3本です。</p>
   </div>
 </header>
 
@@ -348,6 +353,15 @@ footer a{color:var(--fg-dim)}
     <p>プログラミングは専門ではありません。ここに挙げたツールは、私がプログラミング言語を学んで書いたものではありません。現場で困っていることを AI に説明し、話しながら「何を作るか」を決めて、作ってもらったものを試しては直す、という進め方をしています。細かい仕組みの部分は AI に出してもらっており、専門的な中身まで私の言葉で説明できるわけではありません。</p>
     <p>ただ、実際に使えるところまで持っていくのは、AI に頼めば全部やってくれるという話ではありません。意図どおりに動かないところを洗い出して、どう直してほしいかを AI に伝える、というやり取りを何度も繰り返しています。使っていて思いついた機能を足すこともあります。iPhone で画面が暗くなると録音が止まってしまう、書き出したファイルを Excel で開くと文字化けする。そういう問題も、作ったあとに使いながら一つずつ直しました。</p>
     <p>何を作るかを決めて、実際に使って不便なところがないかを調べ、直ったことを確かめる。この部分は自分でやっています。現場を知っていればこういったものが一人で作れる、という例として見ていただければ幸いです。</p>
+
+    <p><strong>使っている道具</strong></p>
+    <dl>
+      <dt>Claude Code ／ Cursor</dt><dd>実装、修正、実機やブラウザでの動作確認</dd>
+      <dt>Claude</dt><dd>何を作るかの相談、設計の検討、文章の作成</dd>
+      <dt>Gemini API</dt><dd>製品に組み込んで、書き起こしの清書や応対の採点に使用</dd>
+      <dt>Gemini</dt><dd>アイコンや記事用の画像生成</dd>
+      <dt>Obsidian</dt><dd>判断の経緯と手順を記録し、AI に前提として読ませる</dd>
+    </dl>
   </div>
 </section>
 
