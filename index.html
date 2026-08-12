@@ -90,6 +90,7 @@ h2{font-size:13px; letter-spacing:.16em; color:var(--fg-dim); font-weight:600; m
 .work dt{color:var(--fg-dim); font-weight:600; white-space:nowrap}
 .work dd{margin:0; color:var(--fg-mid)}
 .work video{width:100%; max-width:880px; display:block; border:1px solid var(--line); border-radius:10px; margin:2px 0 6px; background:#000}
+.work .shot{width:100%; max-width:540px; display:block; border:1px solid var(--line); border-radius:10px; margin:2px 0 6px}
 .videonote{color:var(--fg-dim); font-size:13px; margin:0 0 14px}
 
 /* stance */
@@ -260,6 +261,19 @@ footer a{color:var(--fg-dim)}
         <dt>こだわり</dt><dd>位置と大きさだけでなく、ウィンドウの前後の重なり順まで戻します。動画編集ソフトのような外から動かしにくいアプリや、全画面表示になっているウィンドウも扱えるようにしました</dd>
         <dt>使ったもの</dt><dd>Python、AppleScript</dd>
         <dt>作った理由</dt><dd>動画編集・AI・ブラウザと画面を切り替えながら作業していると、配置が毎回崩れて、そのたびに手で並べ直していました。作業を始める前の「机の上を整える」時間をワンクリックにしたくて作りました</dd>
+      </dl>
+    </div>
+
+    <div class="work">
+      <h3>外出前チェック — 遠隔開発の準備がそろっているかを1画面で（Mac 用）</h3>
+      <img class="shot" src="assets/gaishutsu-check.png" alt="外出前チェックの画面。「外出して大丈夫です」の表示と、確認項目が OK 印つきで並んでいる" loading="lazy">
+      <p class="videonote">全部そろうと「外出して大丈夫です」。ブラウザを開いたままリロードすれば、その場で調べ直します。</p>
+      <dl>
+        <dt>なりたち</dt><dd>外出先から iPhone で自宅の Claude Code に指示を出せるようにしています（Claude Code の公式機能です）。ただ、つながる状態を保つには「Mac がスリープしない設定が生きているか」「遠隔操作の機能が有効か」など、そろっていないといけない条件がいくつもあり、ひとつでも欠けると外出先からは直せません</dd>
+        <dt>目的</dt><dd>出かける前の確認があちこちに散らばっていて、ひとつ確認し忘れたせいで外出先からつながらない、を防ぐことです</dd>
+        <dt>使い方</dt><dd>アプリをダブルクリックすると、必要な条件をまとめて調べて、結果を1画面に並べます。その場で直せる問題（スリープ防止が止まっている、など）は、直すかどうかをその場で聞いてきます</dd>
+        <dt>使ったもの</dt><dd>AppleScript、シェルスクリプト</dd>
+        <dt>作った理由</dt><dd>業務内製の日程調整ツールと同じ考え方です。あちこち見て回っていた確認を、ひとつの画面に集約すると、確認そのものが数秒で終わり、見落としもなくなります。自分の開発環境に対しても、業務と同じ型でツールを作っています</dd>
       </dl>
     </div>
   </div>
