@@ -89,6 +89,8 @@ h2{font-size:13px; letter-spacing:.16em; color:var(--fg-dim); font-weight:600; m
 .work dl{margin:0; display:grid; grid-template-columns:minmax(4.5em,max-content) 1fr; gap:5px 14px; font-size:14.5px}
 .work dt{color:var(--fg-dim); font-weight:600; white-space:nowrap}
 .work dd{margin:0; color:var(--fg-mid)}
+.work video{width:100%; max-width:880px; display:block; border:1px solid var(--line); border-radius:10px; margin:2px 0 6px; background:#000}
+.videonote{color:var(--fg-dim); font-size:13px; margin:0 0 14px}
 
 /* stance */
 .stance p{color:var(--fg-mid); font-size:15px; max-width:44em}
@@ -327,12 +329,13 @@ footer a{color:var(--fg-dim)}
 <section>
   <div class="wrap">
     <h2>Desktop</h2>
-    <p class="h2ja">ヘルプデスク業務支援・AI 議事録アシスタント（デスクトップ版まもるくん）</p>
-    <p class="sectnote">個人 PC で開発した Python デスクトップアプリです（Windows／Mac 対応）。Chrome 拡張として公開しているまもるくんを、ヘルプデスクの現場で使うことに絞って作り直したものです。</p>
+    <p class="h2ja">個人 PC で動かしているデスクトップアプリ</p>
+    <p class="sectnote">個人 PC で開発した Python のデスクトップアプリです。</p>
 
     <div class="work">
-      <h3>会話を止めずに、その場で AI へ質問できる</h3>
+      <h3>デスクトップ版まもるくん — 会話を止めずに、その場で AI へ質問できる</h3>
       <dl>
+        <dt>なりたち</dt><dd>Chrome 拡張として公開しているまもるくんを、ヘルプデスクの現場で使うことに絞って作り直したものです（Windows／Mac 対応）</dd>
         <dt>目的</dt><dd>電話を保留にして調べる時間を短くすることと、通話後のログ作成を楽にすることです</dd>
         <dt>モード</dt><dd>「ヘルプデスク用」と「通常の音声書き起こし」の 2 つから選べます。ヘルプデスク用は要約と対応履歴まで出す作りで、通常のほうは話した内容を読みやすく整えて書き出すだけの作りです</dd>
         <dt>使い方</dt><dd>話した内容がその場で文字になります。<strong>その文字をマウスでなぞるだけで、なぞった部分が AI への質問ボックスに入ります。</strong>「こういうご質問ですね」とお客様に復唱しながらその部分をなぞれば、会話を止めずに AI へ質問を投げられます。打ち込む手間がありません。エラー画面を撮って貼り付ければ、AI がその画像を読んで対処方法を出してくれます</dd>
@@ -340,6 +343,19 @@ footer a{color:var(--fg-dim)}
         <dt>音声の扱い</dt><dd>お客様の声は最初から取り込まない作りにしています。マイクの取り込み口を分けてあるので、自分が話した内容だけが AI に渡ります。環境が許せばお客様側の音声も取る設計にできますが、今回はそこを外しました</dd>
         <dt>使ったもの</dt><dd>Python、Google の音声認識、Gemini API</dd>
         <dt>作った理由</dt><dd>いろいろな業務で一度 AI を挟むことが増えていますが、ヘルプデスクのように即時性が求められる場では、打ち込む時間そのものが邪魔になります。なぞるだけで質問できる形なら使えるのではないかと思って作りました</dd>
+      </dl>
+    </div>
+
+    <div class="work">
+      <h3>ならべるくん — ウィンドウの並びを覚えて、ダブルクリックで戻す（Mac 用）</h3>
+      <video src="assets/naraberukun-demo.mp4" controls muted playsinline preload="metadata"></video>
+      <p class="videonote">デモ（23秒）：ウィンドウを3つ動かしてから、Dock のならべるくんをダブルクリック。覚えさせておいた並びに戻ります。</p>
+      <dl>
+        <dt>目的</dt><dd>作業をしているうちに崩れていくウィンドウの配置を、手で並べ直す時間をなくすことです</dd>
+        <dt>使い方</dt><dd>気に入った並びを一度おぼえさせれば、あとはダブルクリックするだけです。設定画面はなく、「手で並べて、おぼえさせる」が設定のすべてです</dd>
+        <dt>こだわり</dt><dd>位置と大きさだけでなく、ウィンドウの前後の重なり順まで戻します。動画編集ソフトのような外から動かしにくいアプリや、全画面表示になっているウィンドウも扱えるようにしました</dd>
+        <dt>使ったもの</dt><dd>Python、AppleScript</dd>
+        <dt>作った理由</dt><dd>動画編集・AI・ブラウザと画面を切り替えながら作業していると、配置が毎回崩れて、そのたびに手で並べ直していました。作業を始める前の「机の上を整える」時間をワンクリックにしたくて作りました</dd>
       </dl>
     </div>
   </div>
