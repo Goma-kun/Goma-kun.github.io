@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>開発の進め方 | Nishira</title>
+<link rel="canonical" href="https://nishira.jp/approach.html">
+<meta name="description" content="プログラミングは専門ではありません。現場で困っていることを AI に説明し、作ってもらったものを試しては直す、という進め方でツールを形にしています。">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap">
+    <p class="brand"><a href="./">NISHIRA</a></p>
+    <h1>開発の進め方</h1>
+    <p class="lede">ここに挙げたツールを、AI とどう作っているかについてです。</p>
+    <nav class="toc" aria-label="サイト内ページ">
+      <a href="./">作品<span class="n">拡張機能・アプリ</span></a>
+      <a href="jitsumu.html">業務での実績<span class="n">GAS・AI 活用</span></a>
+      <a href="approach.html" aria-current="page">開発の進め方</a>
+    </nav>
+  </div>
+</header>
+
+<section class="stance" id="approach">
+  <div class="wrap">
+    <p>プログラミングは専門ではありません。ここに挙げたツールは、私がプログラミング言語を学んで書いたものではありません。現場で困っていることを AI に説明し、話しながら「何を作るか」を決めて、作ってもらったものを試しては直す、という進め方をしています。細かい仕組みの部分は AI に出してもらっており、専門的な中身まで私の言葉で説明できるわけではありません。</p>
+    <p>ただ、実際に使えるところまで持っていくのは、AI に頼めば全部やってくれるという話ではありません。意図どおりに動かないところを洗い出して、どう直してほしいかを AI に伝える、というやり取りを何度も繰り返しています。使っていて思いついた機能を足すこともあります。iPhone で画面が暗くなると録音が止まってしまう、書き出したファイルを Excel で開くと文字化けする。そういう問題も、作ったあとに使いながら一つずつ直しました。</p>
+    <p>何を作るかを決めて、実際に使って不便なところがないかを調べ、直ったことを確かめる。この部分は自分でやっています。現場を知っていればこういったものが一人で作れる、という例として見ていただければ幸いです。</p>
+    <p>開発にあてる時間を作るための環境も、同じ進め方で整えています。外出先から iPhone で自宅の Claude Code に指示を出せるようにしており（Claude Code の公式機能を使っています）、外出前に必要な準備が揃っているかは、バラバラだった確認作業を1画面にまとめた自作の Mac アプリ（<a href="works/gaishutsu-check.html">外出前チェック</a>）で確かめています。確認の手間をひとつの画面に集約するという作り方は、業務でツールを作るときと変わりません。</p>
+
+    <p><strong>使っているツール</strong></p>
+    <dl>
+      <dt>Claude Code</dt><dd>実装、修正、実機やブラウザでの動作確認</dd>
+      <dt>Claude</dt><dd>何を作るかの相談、設計の検討、文章の作成</dd>
+      <dt>Gemini API</dt><dd>製品に組み込んで、書き起こしの清書や応対の採点に使用</dd>
+      <dt>Gemini</dt><dd>アイコンや記事用の画像生成</dd>
+      <dt>Obsidian</dt><dd>判断の経緯と手順を記録し、AI に前提として読ませる</dd>
+    </dl>
+    <p>以前は Cursor も併用していましたが、使い分ける理由が見つからなかったため、現在は Claude Code に集約しています。Claude Code が利用上限で止まった際には、Codex に同じ資料（Obsidian の要件定義と作業記録）を読ませて開発を引き継いでおり、AI が読める形で残してあるため、ツールが変わっても作業を続けられます。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <nav class="toc toc-footer" aria-label="サイト内ページ（ページ下部）">
+      <a href="./">作品一覧</a>
+      <a href="jitsumu.html">業務での実績</a>
+      <a href="#top">↑ ページの先頭へ</a>
+    </nav>
+    <p class="updated">最終更新：2026年8月</p>
+    <p>Nishira ／ お問い合わせ：<a href="mailto:info@nishira.jp">info@nishira.jp</a> ／ <a href="https://github.com/Goma-kun" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -9,124 +9,16 @@
 <meta property="og:title" content="Nishira — AI 活用による業務改善ツール開発">
 <meta property="og:description" content="Chrome ウェブストア公開3本、GAS 業務自動化、Python/生成 AI デスクトップアプリ。">
 <meta property="og:type" content="website">
-<style>
-:root{
-  --bg:#fbfbfa; --bg-card:#ffffff; --fg:#1c1b19; --fg-mid:#4a4845; --fg-dim:#78756f;
-  --line:#e6e3dd; --accent:#b4531f; --accent-soft:#fdf2e9; --chip:#f2efe9;
-  --shadow:0 1px 2px rgba(28,27,25,.05),0 8px 24px -12px rgba(28,27,25,.14);
-}
-@media (prefers-color-scheme:dark){
-  :root{
-    --bg:#16151a; --bg-card:#1e1d23; --fg:#eceaf0; --fg-mid:#d2ced9; --fg-dim:#8a8593;
-    --line:#302e38; --accent:#f0995c; --accent-soft:#2a2028; --chip:#2a2830;
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.6);
-  }
-}
-:root[data-theme="light"]{
-  --bg:#fbfbfa; --bg-card:#ffffff; --fg:#1c1b19; --fg-mid:#4a4845; --fg-dim:#78756f;
-  --line:#e6e3dd; --accent:#b4531f; --accent-soft:#fdf2e9; --chip:#f2efe9;
-  --shadow:0 1px 2px rgba(28,27,25,.05),0 8px 24px -12px rgba(28,27,25,.14);
-}
-:root[data-theme="dark"]{
-  --bg:#16151a; --bg-card:#1e1d23; --fg:#eceaf0; --fg-mid:#d2ced9; --fg-dim:#8a8593;
-  --line:#302e38; --accent:#f0995c; --accent-soft:#2a2028; --chip:#2a2830;
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.6);
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{
-  margin:0; background:var(--bg); color:var(--fg);
-  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic Medium",Meiryo,sans-serif;
-  line-height:1.85; font-size:16px; letter-spacing:.01em;
-  font-feature-settings:"palt" 1;
-}
-.wrap{max-width:860px; margin:0 auto; padding:0 24px}
-
-/* header */
-header{padding:72px 0 56px; border-bottom:1px solid var(--line)}
-.brand{font-size:14px; letter-spacing:.22em; color:var(--accent); font-weight:600; margin:0 0 20px}
-h1{font-size:clamp(26px,5vw,38px); line-height:1.45; margin:0 0 20px; font-weight:700; letter-spacing:.005em}
-.lede{font-size:17px; color:var(--fg-mid); margin:0; max-width:44em}
-.lede + .lede{margin-top:14px}
-
-/* sections */
-section{padding:56px 0; border-bottom:1px solid var(--line)}
-section:last-of-type{border-bottom:0}
-h2{font-size:13px; letter-spacing:.16em; color:var(--fg-dim); font-weight:600; margin:0 0 8px; text-transform:uppercase}
-.h2ja{font-size:23px; font-weight:700; margin:0 0 10px; letter-spacing:.01em}
-.sectnote{color:var(--fg-mid); margin:0 0 32px; font-size:15px; max-width:44em}
-
-/* extension cards */
-.cards{display:grid; gap:20px}
-.card{
-  background:var(--bg-card); border:1px solid var(--line); border-radius:14px;
-  padding:26px; box-shadow:var(--shadow);
-}
-.card-head{display:flex; gap:16px; align-items:flex-start; margin-bottom:14px}
-.card-head img{width:52px; height:52px; border-radius:11px; flex:none; background:var(--chip)}
-.card-title{margin:0; font-size:20px; font-weight:700; line-height:1.4}
-.card-sub{margin:3px 0 0; font-size:13.5px; color:var(--fg-dim)}
-.card p{margin:0 0 16px; color:var(--fg-mid); font-size:15px}
-.points{margin:0 0 18px; padding:0; list-style:none}
-.points li{position:relative; padding-left:19px; font-size:14.5px; color:var(--fg-mid); margin-bottom:5px}
-.points li::before{content:""; position:absolute; left:4px; top:.72em; width:5px; height:5px; border-radius:50%; background:var(--accent); opacity:.65}
-.chips{display:flex; flex-wrap:wrap; gap:7px; margin:0 0 18px}
-.chip{font-size:12.5px; background:var(--chip); color:var(--fg-mid); border-radius:999px; padding:3px 11px; white-space:nowrap}
-.links{display:flex; flex-wrap:wrap; gap:10px}
-.btn{
-  display:inline-block; font-size:14px; font-weight:600; text-decoration:none;
-  padding:9px 17px; border-radius:9px; border:1px solid var(--line); color:var(--fg);
-  background:var(--bg); transition:border-color .15s, color .15s;
-}
-.btn:hover{border-color:var(--accent); color:var(--accent)}
-.btn-primary{background:var(--accent-soft); border-color:transparent; color:var(--accent)}
-.btn-primary:hover{border-color:var(--accent)}
-
-/* work list */
-.work{border-left:2px solid var(--line); padding:0 0 4px 22px; margin-bottom:30px}
-.work:last-child{margin-bottom:0}
-.work h3{margin:0 0 10px; font-size:17px; font-weight:700}
-.work dl{margin:0; display:grid; grid-template-columns:minmax(4.5em,max-content) 1fr; gap:5px 14px; font-size:14.5px}
-.work dt{color:var(--fg-dim); font-weight:600; white-space:nowrap}
-.work dd{margin:0; color:var(--fg-mid)}
-.work video{width:100%; max-width:880px; display:block; border:1px solid var(--line); border-radius:10px; margin:2px 0 6px; background:#000}
-.work .shot{width:100%; max-width:540px; display:block; border:1px solid var(--line); border-radius:10px; margin:2px 0 6px}
-.videonote{color:var(--fg-dim); font-size:13px; margin:0 0 14px}
-
-/* stance */
-.stance p{color:var(--fg-mid); font-size:15px; max-width:44em}
-.stance strong{color:var(--fg); font-weight:600}
-.stance dl{margin:14px 0 0; display:grid; grid-template-columns:minmax(9.5em,max-content) 1fr; gap:6px 14px; font-size:14.5px; max-width:44em}
-.stance dt{color:var(--fg-dim); font-weight:600}
-.stance dd{margin:0; color:var(--fg-mid)}
-
-/* 目次 */
-html{scroll-behavior:smooth}
-section{scroll-margin-top:14px}
-.toc{display:flex; flex-wrap:wrap; gap:8px; margin:28px 0 0; padding:0}
-.toc a{
-  display:inline-block; font-size:13.5px; font-weight:600; text-decoration:none;
-  color:var(--fg-mid); background:var(--chip); border:1px solid transparent;
-  border-radius:999px; padding:5px 14px; transition:border-color .15s, color .15s;
-}
-.toc a:hover{border-color:var(--accent); color:var(--accent)}
-.toc a .n{font-weight:400; color:var(--fg-dim); margin-left:6px; font-size:12px}
-.toc-footer{margin:0 0 28px; padding-bottom:28px; border-bottom:1px solid var(--line)}
-
-footer{padding:44px 0 64px; color:var(--fg-dim); font-size:13.5px}
-footer a{color:var(--fg-dim)}
-.updated{margin:0 0 6px}
-
-@media (max-width:600px){
-  header{padding:52px 0 40px}
-  section{padding:44px 0}
-  .card{padding:22px}
-  .work dl{grid-template-columns:1fr; gap:2px}
-  .stance dl{grid-template-columns:1fr; gap:2px}
-  .stance dt{margin-top:8px}
-  .work dt{margin-top:8px}
-}
-</style>
+<link rel="stylesheet" href="assets/style.css">
+<script>
+// ページ分割前の古いリンク（nishira.jp/#inhouse など）を新しいページへ案内する
+(function(){
+  var map={inhouse:"jitsumu.html#inhouse",ai:"jitsumu.html#ai",knowledge:"jitsumu.html#knowledge",
+           planned:"jitsumu.html#planned",approach:"approach.html"};
+  var h=location.hash.replace("#","");
+  if(map[h]) location.replace(map[h]);
+})();
+</script>
 </head>
 <body>
 
@@ -136,14 +28,10 @@ footer a{color:var(--fg-dim)}
     <h1>現場の困りごとを、AI を使って動くツールにしています。</h1>
     <p class="lede">Google Workspace 管理・ヘルプデスクの現場で10年以上働くなかで見つけた、手作業で消えてしまう時間を、Chrome 拡張機能・Google Apps Script・AI アシスタント・デスクトップアプリとして形にしてきました。</p>
     <p class="lede">何を作るかを決めるところから、動くように直して Chrome ウェブストアの審査を通すところまで、Claude Code を中心に AI と相談しながら一人で進めています。公開中の拡張機能は3本です。</p>
-    <nav class="toc" aria-label="目次">
-      <a href="#published">公開中の拡張機能<span class="n">3本</span></a>
-      <a href="#desktop">デスクトップアプリ<span class="n">デモ動画</span></a>
-      <a href="#inhouse">業務内製ツール<span class="n">GAS</span></a>
-      <a href="#ai">AI アシスタント<span class="n">Gem</span></a>
-      <a href="#knowledge">ナレッジの仕組み</a>
-      <a href="#planned">これから作りたいもの</a>
-      <a href="#approach">開発の進め方</a>
+    <nav class="toc" aria-label="サイト内ページ">
+      <a href="./" aria-current="page">作品<span class="n">拡張機能・アプリ</span></a>
+      <a href="jitsumu.html">業務での実績<span class="n">GAS・AI 活用</span></a>
+      <a href="approach.html">開発の進め方</a>
     </nav>
   </div>
 </header>
@@ -152,78 +40,36 @@ footer a{color:var(--fg-dim)}
   <div class="wrap">
     <h2>Published</h2>
     <p class="h2ja">Chrome ウェブストアで公開中の拡張機能</p>
-    <p class="sectnote">いずれも Google の審査を通過し、誰でもインストールできる状態で公開しています。中身のコードも GitHub ですべて公開しています（仕事で使っても構わない、制限のないライセンスにしています）。</p>
+    <p class="sectnote">いずれも Google の審査を通過し、誰でもインストールできる状態で公開しています。コードも GitHub ですべて公開しています。カードを開くと、詳しい説明とストアへのリンクがあります。</p>
 
-    <div class="cards">
+    <div class="works-grid">
 
-      <article class="card">
-        <div class="card-head">
-          <img src="assets/mamorukun.png" alt="まもるくんのアイコン">
-          <div>
-            <h3 class="card-title">まもるくん</h3>
-            <p class="card-sub">AI 音声書き起こし・ログ作成ツール ／ Chrome 拡張・Web・iPhone 対応</p>
-          </div>
+      <a class="wcard" href="works/mamorukun.html">
+        <div class="wcard-media"><img class="appicon" src="assets/mamorukun.png" alt="まもるくんのアイコン"></div>
+        <div class="wcard-body">
+          <h3 class="wcard-title">まもるくん</h3>
+          <p class="wcard-sub">話した内容をその場で文字にして、AI が貼って使える文章に清書します。Chrome 拡張・Web・iPhone 対応。</p>
+          <div class="wcard-meta"><span class="chip">Chrome 拡張</span><span class="chip">音声書き起こし</span><span class="wcard-more">詳しく見る →</span></div>
         </div>
-        <p>通話しながらのログ作成や、議事録・アイデアの書き留めに使う道具です。Chrome 拡張のほか、iPhone の Safari からも同じものが使えます。</p>
-        <ul class="points">
-          <li>話した内容を、その場で文字にしていきます</li>
-          <li>音声認識だけでは、聞き間違いが残ったり「えー」「あの」といった言い淀みがそのまま入ったりします。書き起こしのあと AI が自動で清書するので、そのまま貼って使える文章になります（清書には Google の APIキーが必要です）</li>
-          <li>聞き取れる言語は11種類あります。画面の表示は日本語のまま、聞き取る言語だけを切り替えられます</li>
-        </ul>
-        <div class="chips"><span class="chip">Chrome 拡張</span><span class="chip">Gemini API</span><span class="chip">Cloudflare</span><span class="chip">音声認識</span><span class="chip">日本語・英語対応</span></div>
-        <div class="links">
-          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/pnmjcgdobakecldppfhghdccblaoolla" target="_blank" rel="noopener noreferrer">Chrome ウェブストア</a>
-          <a class="btn" href="https://github.com/Goma-kun/mamorukun" target="_blank" rel="noopener noreferrer">ソースコード</a>
-        </div>
-      </article>
+      </a>
 
-      <article class="card">
-        <div class="card-head">
-          <img src="assets/smartshot.png" alt="SmartShotのアイコン">
-          <div>
-            <h3 class="card-title">SmartShot</h3>
-            <p class="card-sub">AI に画面を見せて相談するためのスクリーンショット拡張</p>
-          </div>
+      <a class="wcard" href="works/smartshot.html">
+        <div class="wcard-media"><img class="appicon" src="assets/smartshot.png" alt="SmartShotのアイコン"></div>
+        <div class="wcard-body">
+          <h3 class="wcard-title">SmartShot</h3>
+          <p class="wcard-sub">撮った瞬間にコピーされるスクリーンショット。AI のチャット欄に貼り付けるだけで画面を見せられます。</p>
+          <div class="wcard-meta"><span class="chip">Chrome 拡張</span><span class="chip">スクリーンショット</span><span class="wcard-more">詳しく見る →</span></div>
         </div>
-        <p>角の丸いボタンやカードも、丸い形のままスクショできたら便利だなと思って作ってみました。そういうアプリがあることは知っていましたが、今なら AI 使えば自分で作れるだろうと思い、やってみました。また、AI に何かを依頼するときにスクリーンショットを添付すると、かなり正確に状況を把握してくれます。SmartShot なら撮った瞬間にコピーされるので、チャット欄に貼り付けるだけで済みます。マニュアルや手順書を作るときの「きれいに撮り直す」手間をなくす用途にも使えます。</p>
-        <ul class="points">
-          <li>撮ると同時にコピーされます。AI のチャット欄にそのまま貼り付けられるので、保存も添付も要りません</li>
-          <li>必要な部分だけを切り出せます。画面全体を送るとどこの話か伝わりにくくなりますが、エラーの出ている枠だけを渡せば、質問も答えも短くなります</li>
-          <li>範囲を動かすと、近くにある枠線に自動で吸着します。ぴったり合わせるために少しずつ動かす作業が要りません</li>
-          <li>角が丸いボタンやカードは、丸い形のまま切り抜きます</li>
-          <li>範囲を選んでいる途中でページをスクロールしても、選び直さずに続けられます</li>
-          <li>キーボードだけで撮れます。マウスに持ち替えずに、キーを2回押すだけで終わります</li>
-          <li>範囲を選ばずに、表示中の画面を丸ごと撮ることもできます。細かく選ばずどんどん撮って渡したいときに使えます</li>
-          <li>撮ったあとの動きを選べます。「コピーだけ」にすると、保存先を聞く画面が出ないので、撮ってそのまま貼り付けられます。終わると音で知らせます</li>
-        </ul>
-        <div class="chips"><span class="chip">Chrome 拡張</span><span class="chip">AI に画面を渡す</span><span class="chip">画像の切り抜き</span><span class="chip">自動コピー</span><span class="chip">保存方法を選択</span></div>
-        <div class="links">
-          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/dpnopohdhjdelkjccfdmmbancjckkfhn" target="_blank" rel="noopener noreferrer">Chrome ウェブストア</a>
-          <a class="btn" href="https://github.com/Goma-kun/SmartShot-Extension" target="_blank" rel="noopener noreferrer">ソースコード</a>
-        </div>
-      </article>
+      </a>
 
-      <article class="card">
-        <div class="card-head">
-          <img src="assets/osamukun.png" alt="おさむくんのアイコン">
-          <div>
-            <h3 class="card-title">おさむくん</h3>
-            <p class="card-sub">定型文の検索・コピー ／ インターネットに接続しません</p>
-          </div>
+      <a class="wcard" href="works/osamukun.html">
+        <div class="wcard-media"><img class="appicon" src="assets/osamukun.png" alt="おさむくんのアイコン"></div>
+        <div class="wcard-body">
+          <h3 class="wcard-title">おさむくん</h3>
+          <p class="wcard-sub">定型文を検索してすぐコピー。サイドパネルに常駐し、インターネットには接続しません。</p>
+          <div class="wcard-meta"><span class="chip">Chrome 拡張</span><span class="chip">通信なし</span><span class="wcard-more">詳しく見る →</span></div>
         </div>
-        <p>よく使う文章を登録しておいて、検索してすぐコピーできる拡張機能です。ブラウザのサイドパネルに常駐するので、メール画面を開いたまま横で探せます。コールセンターやヘルプデスク、事務職で、定型文をスプレッドシートで管理している現場を想定しました。</p>
-        <ul class="points">
-          <li>スプレッドシートの3列（カテゴリ／概要／本文）を選んで貼り付けるだけで一括登録できます。CSV・TSV ファイルの読み込みにも対応しています</li>
-          <li>保存・追加・削除・読み込みは、直前のひとつなら元に戻せます</li>
-          <li>この拡張機能が求める許可は「画面の横に表示すること」と「パソコンの中に保存すること」の2つだけです。開いているページの中身は読み取りませんし、インターネットに何かを送る仕組み自体を入れていません</li>
-          <li>キーボードだけで完結します（↑↓で選択、Enter でコピー、Esc で消去）</li>
-        </ul>
-        <div class="chips"><span class="chip">Chrome 拡張</span><span class="chip">サイドパネル</span><span class="chip">端末内に保存</span><span class="chip">CSV・TSV 読み込み</span><span class="chip">通信なし</span></div>
-        <div class="links">
-          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/hhbldkmlimbjbjficjbdpnohallkledi" target="_blank" rel="noopener noreferrer">Chrome ウェブストア</a>
-          <a class="btn" href="https://github.com/Goma-kun/osamukun" target="_blank" rel="noopener noreferrer">ソースコード</a>
-        </div>
-      </article>
+      </a>
 
     </div>
   </div>
@@ -235,223 +81,76 @@ footer a{color:var(--fg-dim)}
     <p class="h2ja">個人 PC で動かしているデスクトップアプリ</p>
     <p class="sectnote">個人 PC で開発した Python のデスクトップアプリです。</p>
 
-    <div class="work">
-      <h3>デスクトップ版まもるくん — 会話を止めずに、その場で AI へ質問できる</h3>
-      <dl>
-        <dt>なりたち</dt><dd>Chrome 拡張として公開しているまもるくんを、ヘルプデスクの現場で使うことに絞って作り直したものです（Windows／Mac 対応）</dd>
-        <dt>目的</dt><dd>電話を保留にして調べる時間を短くすることと、通話後のログ作成を楽にすることです</dd>
-        <dt>モード</dt><dd>「ヘルプデスク用」と「通常の音声書き起こし」の 2 つから選べます。ヘルプデスク用は要約と対応履歴まで出す作りで、通常のほうは話した内容を読みやすく整えて書き出すだけの作りです</dd>
-        <dt>使い方</dt><dd>話した内容がその場で文字になります。<strong>その文字をマウスでなぞるだけで、なぞった部分が AI への質問ボックスに入ります。</strong>「こういうご質問ですね」とお客様に復唱しながらその部分をなぞれば、会話を止めずに AI へ質問を投げられます。打ち込む手間がありません。エラー画面を撮って貼り付ければ、AI がその画像を読んで対処方法を出してくれます</dd>
-        <dt>通話のあと</dt><dd>会話が終わると、要約が決まった形で出てきます。そのまま CRM に対応履歴として貼り付けられます</dd>
-        <dt>音声の扱い</dt><dd>お客様の声は最初から取り込まない作りにしています。マイクの取り込み口を分けてあるので、自分が話した内容だけが AI に渡ります。環境が許せばお客様側の音声も取る設計にできますが、今回はそこを外しました</dd>
-        <dt>使ったもの</dt><dd>Python、Google の音声認識、Gemini API</dd>
-        <dt>作った理由</dt><dd>いろいろな業務で一度 AI を挟むことが増えていますが、ヘルプデスクのように即時性が求められる場では、打ち込む時間そのものが邪魔になります。なぞるだけで質問できる形なら使えるのではないかと思って作りました</dd>
-      </dl>
-    </div>
+    <div class="works-grid">
 
-    <div class="work">
-      <h3>ならべるくん — ウィンドウの並びを覚えて、ワンクリックで戻す（Mac 用）</h3>
-      <video src="assets/naraberukun-demo.mp4" controls muted playsinline preload="metadata"></video>
-      <p class="videonote">デモ①（23秒）：ウィンドウを3つ動かしてから、Dock のならべるくんをワンクリック。覚えさせておいた並びに戻ります。</p>
-      <video src="assets/naraberukun-swap.mp4" controls muted playsinline preload="metadata"></video>
-      <p class="videonote">デモ②（16秒）：ブラウザをまん中のメインの席へドラッグしてから復元すると、席の主（動画編集ソフト）と場所を入れ替えます。「戻す」だけでなく「席替え」もできます。</p>
-      <dl>
-        <dt>目的</dt><dd>作業をしているうちに崩れていくウィンドウの配置を、手で並べ直す時間をなくすことです</dd>
-        <dt>使い方</dt><dd>気に入った並びを一度おぼえさせれば、あとは Dock からワンクリックするだけです。設定画面はなく、「手で並べて、おぼえさせる」が設定のすべてです</dd>
-        <dt>こだわり</dt><dd>位置と大きさだけでなく、ウィンドウの前後の重なり順まで戻します。動画編集ソフトのような外から動かしにくいアプリや、全画面表示になっているウィンドウも扱えるようにしました</dd>
-        <dt>使ったもの</dt><dd>Python、AppleScript</dd>
-        <dt>作った理由</dt><dd>動画編集・AI・ブラウザと画面を切り替えながら作業していると、配置が毎回崩れて、そのたびに手で並べ直していました。作業を始める前の「机の上を整える」時間をワンクリックにしたくて作りました</dd>
-      </dl>
-    </div>
+      <a class="wcard" href="works/naraberukun.html">
+        <div class="wcard-media"><video src="assets/naraberukun-demo.mp4" autoplay loop muted playsinline preload="metadata" aria-label="ならべるくんのデモ。ウィンドウを3つ動かしてから、ワンクリックで元の並びに戻る"></video></div>
+        <div class="wcard-body">
+          <h3 class="wcard-title">ならべるくん</h3>
+          <p class="wcard-sub">ウィンドウの並びを覚えて、ワンクリックで戻す Mac アプリ。前後の重なり順まで再現します。</p>
+          <div class="wcard-meta"><span class="chip">Mac</span><span class="chip">デモ動画あり</span><span class="wcard-more">詳しく見る →</span></div>
+        </div>
+      </a>
 
-    <div class="work">
-      <h3>SmartShot Mac 版 — ブラウザの外でも、撮った瞬間にコピーされる（Mac 用）</h3>
-      <dl>
-        <dt>なりたち</dt><dd>Chrome 拡張として公開している SmartShot を、ブラウザの外でも使えるようにした Mac アプリ版です。拡張版はブラウザに表示されるページしか撮れませんが、こちらはどのアプリの画面でも撮れます</dd>
-        <dt>できること</dt><dd>キー1つで起動し、マウスを乗せるだけで撮りたい枠を自動で見つけます。撮った瞬間にコピーされるので、AI のチャット欄にそのまま貼り付けられます。ウィンドウ1枚だけ、画面全体、といった撮り方も選べます</dd>
-        <dt>録画と GIF</dt><dd>画面の録画もできます。録画した動画は「20MB 以内」のように容量を指定するだけで、収まるまで自動で調整しながら GIF に変換します。記事に載せる GIF を作るために外部サービスへアップロードする手間がなくなりました。このページのデモ動画も、このアプリで録画したものです</dd>
-        <dt>使ったもの</dt><dd>Python</dd>
-        <dt>配布</dt><dd>Apple の開発者登録と署名の手続きを進めており、完了しだい無料で配布する予定です</dd>
-      </dl>
-    </div>
+      <a class="wcard" href="works/mamorukun-desktop.html">
+        <div class="wcard-media"><img class="appicon" src="assets/mamorukun.png" alt="まもるくんのアイコン"></div>
+        <div class="wcard-body">
+          <h3 class="wcard-title">デスクトップ版まもるくん</h3>
+          <p class="wcard-sub">通話の書き起こしをマウスでなぞるだけで AI へ質問。会話を止めずに調べられます。</p>
+          <div class="wcard-meta"><span class="chip">Windows / Mac</span><span class="chip">ヘルプデスク向け</span><span class="wcard-more">詳しく見る →</span></div>
+        </div>
+      </a>
 
-    <div class="work">
-      <h3>しゃべるくん — 台本を書くだけで、自分の声のナレーションができる（Mac 用）</h3>
-      <dl>
-        <dt>なりたち</dt><dd>過去に自分で録音した動画のナレーション約 20 分を AI に学習させて、自分の声を再現する音声モデルを作りました。台本のテキストを渡すと、自分の声で読み上げた音声ファイルが出てきます</dd>
-        <dt>目的</dt><dd>動画を作るときの「録音して、言い間違いを編集ソフトで直す」という工程をなくすことです。台本を書き直せば音声も作り直せるので、録り直しという作業がなくなります</dd>
-        <dt>こだわり</dt><dd>音声の学習も生成も、すべて自分の Mac の中で動かしています。外部サービスに声や台本を送らないので、費用もかかりません。学習データの音質や学習のさせ方で仕上がりが大きく変わることが分かり、データを整えて作り直しを重ねました。まだ細かな微調整は必要と思われますが、自分でも聞き分けが難しい水準になりました</dd>
-        <dt>使ったもの</dt><dd>Python、オープンソースの音声合成 AI（GPT-SoVITS）</dd>
-        <dt>声の扱い</dt><dd>学習させてよいのは自分自身の声だけと決めています。この音声を動画で使うときは、AI で生成した音声であることを明記する予定です</dd>
-      </dl>
-    </div>
+      <a class="wcard" href="works/smartshot-mac.html">
+        <div class="wcard-media"><img class="appicon" src="assets/smartshot.png" alt="SmartShotのアイコン"></div>
+        <div class="wcard-body">
+          <h3 class="wcard-title">SmartShot Mac 版</h3>
+          <p class="wcard-sub">ブラウザの外でも、撮った瞬間にコピー。録画から容量指定の GIF 変換までできます。</p>
+          <div class="wcard-meta"><span class="chip">Mac</span><span class="chip">配布準備中</span><span class="wcard-more">詳しく見る →</span></div>
+        </div>
+      </a>
 
-    <div class="work">
-      <h3>外出前チェック — 遠隔開発の準備がそろっているかを1画面で（Mac 用）</h3>
-      <img class="shot" src="assets/gaishutsu-check.png" alt="外出前チェックの画面。「外出して大丈夫です」の表示と、確認項目が OK 印つきで並んでいる" loading="lazy">
-      <p class="videonote">全部そろうと「外出して大丈夫です」。ブラウザを開いたままリロードすれば、その場で調べ直します。</p>
-      <dl>
-        <dt>なりたち</dt><dd>外出先から iPhone で自宅の Claude Code に指示を出せるようにしています（Claude Code の公式機能です）。ただ、つながる状態を保つには「Mac がスリープしない設定が生きているか」「遠隔操作の機能が有効か」など、そろっていないといけない条件がいくつもあり、ひとつでも欠けると外出先からは直せません</dd>
-        <dt>目的</dt><dd>出かける前の確認があちこちに散らばっていて、ひとつ確認し忘れたせいで外出先からつながらない、を防ぐことです</dd>
-        <dt>使い方</dt><dd>アプリをダブルクリックすると、必要な条件をまとめて調べて、結果を1画面に並べます。その場で直せる問題（スリープ防止が止まっている、など）は、直すかどうかをその場で聞いてきます</dd>
-        <dt>使ったもの</dt><dd>AppleScript、シェルスクリプト</dd>
-        <dt>作った理由</dt><dd>業務内製の日程調整ツールと同じ考え方です。あちこち見て回っていた確認を、ひとつの画面に集約すると、確認そのものが数秒で終わり、見落としもなくなります。自分の開発環境に対しても、業務と同じ型でツールを作っています</dd>
-      </dl>
+      <a class="wcard" href="works/shaberukun.html">
+        <div class="wcard-media"><span style="font-size:44px" aria-hidden="true">🎙️</span></div>
+        <div class="wcard-body">
+          <h3 class="wcard-title">しゃべるくん</h3>
+          <p class="wcard-sub">台本を書くだけで、自分の声のナレーションができる音声合成。すべて Mac の中で動きます。</p>
+          <div class="wcard-meta"><span class="chip">Mac</span><span class="chip">音声合成</span><span class="wcard-more">詳しく見る →</span></div>
+        </div>
+      </a>
+
+      <a class="wcard" href="works/gaishutsu-check.html">
+        <div class="wcard-media"><img class="shot" src="assets/gaishutsu-check.png" alt="外出前チェックの画面。「外出して大丈夫です」の表示と、確認項目が OK 印つきで並んでいる" loading="lazy"></div>
+        <div class="wcard-body">
+          <h3 class="wcard-title">外出前チェック</h3>
+          <p class="wcard-sub">遠隔開発の準備がそろっているかを1画面で確認。足りなければその場で直します。</p>
+          <div class="wcard-meta"><span class="chip">Mac</span><span class="wcard-more">詳しく見る →</span></div>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
 
-<section id="inhouse">
+<section>
   <div class="wrap">
-    <h2>In-house</h2>
-    <p class="h2ja">業務内製ツール（Google Apps Script）</p>
-    <p class="sectnote">就業先の業務環境で開発・運用しているものです。情報セキュリティ規定に則り、ここでは課題と解決方針のみ記載しています。</p>
-
-    <div class="work">
-      <h3>転記作業の支援ツール</h3>
-      <dl>
-        <dt>課題</dt><dd>問い合わせ対応のたびに、データベースの内容を見ながらスプレッドシートに打ち直したり、CRMに利用者の情報を履歴として残したりしていました。名前・社員番号・電話番号といった項目を一つずつコピーして、それぞれの欄に貼り付ける必要がありました</dd>
-        <dt>解決</dt><dd>データベースの 1 行をまるごとコピーしてツールに貼り付けると、必要な項目を自動で取り出して、所定の欄に振り分けるようにしました</dd>
-        <dt>成果</dt><dd>手作業では 1 件あたり 30 秒から 1 分ほどかかっていたものが、5 秒で終わるようになりました。項目を取り違える転記ミスもなくなりました</dd>
-      </dl>
+    <h2>More</h2>
+    <p class="h2ja">業務での実績と、開発の進め方</p>
+    <p class="sectnote">就業先の業務で作った内製ツール・AI アシスタント・ナレッジの仕組みは「業務での実績」に、AI とどう作っているかは「開発の進め方」にまとめています。</p>
+    <div class="links">
+      <a class="btn btn-primary" href="jitsumu.html">業務での実績を見る</a>
+      <a class="btn" href="approach.html">開発の進め方を読む</a>
     </div>
-
-    <div class="work">
-      <h3>対応履歴作成・テンプレート自動生成ツール</h3>
-      <dl>
-        <dt>課題</dt><dd>対応履歴の書き方が人によって違い、聞くべきことの抜け漏れも起きていました</dd>
-        <dt>解決</dt><dd>問い合わせの種類を選ぶと、その場合に確認すべき項目が並んだ雛形が自動で出るようにしました</dd>
-        <dt>成果</dt><dd>何を書けばいいかが画面に出るので、慣れている人とそうでない人の差が小さくなりました。決まった見出しが頭に付くので、後から探すのも集計するのも楽になりました</dd>
-      </dl>
-    </div>
-
-    <div class="work">
-      <h3>カレンダー連携型 日程調整支援ツール</h3>
-      <dl>
-        <dt>課題</dt><dd>折り返しの電話をいつかけるか決めるために、複数いるオペレーターのカレンダーを一つずつ見て空き時間を探していました。受信を確認する担当と、日程を調整する担当を分けて回していました</dd>
-        <dt>解決</dt><dd>オペレーター全員のカレンダーを参照して空いている時間を一覧で表示し、そこから 1 クリックで予定をカレンダーに登録できるようにしました</dd>
-        <dt>成果</dt><dd>受信から回答までが 5 分程度で終わるようになりました。以前は日程を調整して、決まった時間にオペレーターが折り返す形で、1 件あたり最低でも 20〜30 分かかっていました。受信したメールを確認する担当と日程調整をする担当を分けて置いていましたが、このツールによってその担当のポジションは不要となりました。多い日で 30 件ほど来る問い合わせを、オペレーター 1 人で対応できるようになりました</dd>
-      </dl>
-    </div>
-  </div>
-</section>
-
-<section id="ai">
-  <div class="wrap">
-    <h2>AI Assistants</h2>
-    <p class="h2ja">業務用に作った AI アシスタント（Gemini の Gem）</p>
-    <p class="sectnote">Gemini には、目的ごとに指示文をあらかじめ用意しておける「Gem」という仕組みがあります。現場でよく発生する作業に合わせて指示文を組み、その場で使えるアシスタントとして配ったものです。こちらも就業先の業務環境で作成・運用しているため、課題と解決方針のみ記載しています。</p>
-
-    <div class="work">
-      <h3>書き起こしから対応履歴を作るアシスタント</h3>
-      <dl>
-        <dt>課題</dt><dd>通話が終わったあとの履歴入力に時間がかかっていました。書き方も人によってばらつきがあり、あとから探しにくい状態でした</dd>
-        <dt>解決</dt><dd>音声の書き起こしを貼り付けるだけで、そのまま登録できる「要約」と「読みやすく整えた全文」が出てくる指示文を組みました。「えー」「あの」のような言い淀みを消し、オペレーターとお客様の発言を分けて整えます。社員番号の形（数字だけか、アルファベットで始まるか）で自社の社員かグループ会社の社員かを見分け、取り出す項目を切り替えます</dd>
-        <dt>成果</dt><dd>入力時間が減り、書き方も揃いました。貼り付けたときに改行が崩れたり余計な装飾が入ったりしないよう、飾りを使わない形で出力させています</dd>
-      </dl>
-    </div>
-
-    <div class="work">
-      <h3>応対品質の評価アシスタント</h3>
-      <dl>
-        <dt>課題</dt><dd>応対の品質チェックを担当者が行う場合、一件ずつ内容を確認する必要があり、時間がかかります。採点する人によって評価がぶれると、結果への納得感も損なわれます</dd>
-        <dt>解決</dt><dd>14項目の評価基準を指示文に組み込み、応対履歴を読ませると100点満点で採点されるようにしました。「保留が発生しなかった場合は減点しない」といった実務上の例外も条件として入れてあります。あわせて、AI が事実にないことを書かないよう、自分で確かめてから答える手順も指示に含めました</dd>
-        <dt>成果</dt><dd>採点の基準が一定になり、確認にかかる時間も短くできます。点数だけでなく「次回から使える具体的な言い回し」まで出すようにしたので、評価だけの道具ではなく育成にも使えます。結果はタブ区切りで出るため、スプレッドシートに1回貼るだけで所定の位置に収まり、集計用の計算式も一緒に出てきます</dd>
-      </dl>
-    </div>
-
-    <div class="work">
-      <h3>チャットの記録をナレッジにするアシスタント</h3>
-      <dl>
-        <dt>課題</dt><dd>Google チャットでやり取りされた対応方法やトラブルの知見が、そのまま流れて消えていました。あとで使える形にまとめ直すには手作業が必要でした</dd>
-        <dt>解決</dt><dd>チャットのやり取りを貼り付けると、「対象となる条件」「起きたこと」「対応の手順」に分けた文書の形で出てくるようにしました。@メンションは氏名に置き換えます。あとで NotebookLM に読み込ませて検索する前提なので、AI が迷わず拾える素直な構成にしてあります</dd>
-        <dt>成果</dt><dd>「出力しました」のような前置きを書かせず、最初から最後までひと続きで出るようにしたので、コピーを1回押すだけで終わります。発信者と日付を自動で拾って末尾に残すため、いつの情報かが分かります</dd>
-      </dl>
-    </div>
-  </div>
-</section>
-
-<section id="knowledge">
-  <div class="wrap">
-    <h2>Knowledge</h2>
-    <p class="h2ja">ナレッジの蓄積と、AI に読ませる仕組み</p>
-    <p class="sectnote">何かを作る話とは別に、日々の業務のなかで続けている進め方です。NotebookLM は就業先の業務で、Obsidian は個人で使っています。</p>
-
-    <div class="work">
-      <h3>NotebookLM に社内ナレッジを読ませて問い合わせに答える</h3>
-      <dl>
-        <dt>課題</dt><dd>ヘルプデスクの窓口が電話番号 1 つしかないため、自分が担当している Google Workspace 以外の問い合わせも入ってきます。そのたびに担当部署へ確認していると時間がかかります</dd>
-        <dt>やり方</dt><dd>自分で用意した指示文でナレッジのドキュメントを作り、それを NotebookLM に読み込ませて、参照しながら回答してもらいます。自分の担当分だけでなく、関連する部署のドキュメントもまとめて読み込ませてあります。ドキュメントはすべて Google ドライブに置いてあるので、中身が更新されても、そのまま最新の内容が参照できます</dd>
-        <dt>効果</dt><dd>担当外の問い合わせが来ても、ほとんど一人で正確に回答できるようになりました。読み込ませるナレッジさえ整っていれば、入ったばかりの人でも一人で対応できる状態になると思います。日々の業務では、ここに挙げたなかでこれが一番効いています</dd>
-      </dl>
-    </div>
-
-    <div class="work">
-      <h3>Obsidian に経緯と記録を残して、AI に読ませる</h3>
-      <dl>
-        <dt>やり方</dt><dd>個人では Obsidian に、これまでの経緯・判断の理由・日々の作業記録を残しています。AI に読ませる前提で、「何者か」「どう書くか」「何を大事にするか」といった前提を決まった場所に置いて、案件ごとの記録は日付を付けて積み上げています。AI が別の AI へ申し送りを書き足していくノートも用意してあります（現在 99 件）</dd>
-        <dt>利点</dt><dd>使う AI が変わっても、同じ説明を何度もしなくて済みます。その場かぎりの指示文とは別のもので、AI に渡す設計図に近いものです。前提が揃っているぶん、頼んだ仕事の精度が上がります</dd>
-        <dt>業務への応用</dt><dd>会社の環境で Obsidian が使えるとは限りませんが、同じ考え方は Google Workspace ならドキュメント、Microsoft なら OneNote でも組めます。機能では劣るとしても、経緯と記録が残っていれば、担当が別の業務に移るときや辞めるときに、改めて引き継ぎのために説明する手間をかなり減らせると考えています</dd>
-      </dl>
-    </div>
-  </div>
-</section>
-
-<section id="planned">
-  <div class="wrap">
-    <h2>Planned</h2>
-    <p class="h2ja">職場で API キーが使えるようになったら作りたいもの</p>
-    <p class="sectnote">個人で作っているものでは API キーを使っていますが、職場では外部サービスの API キーを使う許可が下りていません。使えるようになれば、こういう形で業務を効率化したいと考えているものです。</p>
-
-    <div class="work">
-      <h3>問い合わせメールの返信下書きを自動で作る</h3>
-      <dl>
-        <dt>課題</dt><dd>問い合わせのメールを読み、社内のドキュメントで回答を確認し、決まった雛形に沿って返信文を書きます。この流れを毎回手作業でやっています</dd>
-        <dt>作りたいもの</dt><dd>メールが届いた時点で、社内にまとめてあるナレッジのドキュメントを参照して、雛形に沿いながら内容に合わせた返信文の下書きまで自動で作る仕組みです。送信は人が中身を確認してから押す形にします</dd>
-      </dl>
-    </div>
-
-    <div class="work">
-      <h3>チャットに流れる情報を自動でナレッジにする</h3>
-      <dl>
-        <dt>課題</dt><dd>日々のチャットには、数値や周知事項など、あとで必要になる情報が流れています。いまは手作業でドキュメントに書き起こしているため追いつかず、そのまま流れて消えてしまいます</dd>
-        <dt>作りたいもの</dt><dd>チャットの内容を API 経由で受け取り、スプレッドシートやドキュメントへ自動でまとめる仕組みです。進捗の管理とナレッジの蓄積を、同じ流れの中でできる形にしたいと考えています</dd>
-      </dl>
-    </div>
-  </div>
-</section>
-
-<section class="stance" id="approach">
-  <div class="wrap">
-    <h2>Approach</h2>
-    <p class="h2ja">開発の進め方について</p>
-    <p>プログラミングは専門ではありません。ここに挙げたツールは、私がプログラミング言語を学んで書いたものではありません。現場で困っていることを AI に説明し、話しながら「何を作るか」を決めて、作ってもらったものを試しては直す、という進め方をしています。細かい仕組みの部分は AI に出してもらっており、専門的な中身まで私の言葉で説明できるわけではありません。</p>
-    <p>ただ、実際に使えるところまで持っていくのは、AI に頼めば全部やってくれるという話ではありません。意図どおりに動かないところを洗い出して、どう直してほしいかを AI に伝える、というやり取りを何度も繰り返しています。使っていて思いついた機能を足すこともあります。iPhone で画面が暗くなると録音が止まってしまう、書き出したファイルを Excel で開くと文字化けする。そういう問題も、作ったあとに使いながら一つずつ直しました。</p>
-    <p>何を作るかを決めて、実際に使って不便なところがないかを調べ、直ったことを確かめる。この部分は自分でやっています。現場を知っていればこういったものが一人で作れる、という例として見ていただければ幸いです。</p>
-    <p>開発にあてる時間を作るための環境も、同じ進め方で整えています。外出先から iPhone で自宅の Claude Code に指示を出せるようにしており（Claude Code の公式機能を使っています）、外出前に必要な準備が揃っているかは、バラバラだった確認作業を1画面にまとめた自作の Mac アプリで確かめています。確認の手間をひとつの画面に集約するという作り方は、業務でツールを作るときと変わりません。</p>
-
-    <p><strong>使っているツール</strong></p>
-    <dl>
-      <dt>Claude Code</dt><dd>実装、修正、実機やブラウザでの動作確認</dd>
-      <dt>Claude</dt><dd>何を作るかの相談、設計の検討、文章の作成</dd>
-      <dt>Gemini API</dt><dd>製品に組み込んで、書き起こしの清書や応対の採点に使用</dd>
-      <dt>Gemini</dt><dd>アイコンや記事用の画像生成</dd>
-      <dt>Obsidian</dt><dd>判断の経緯と手順を記録し、AI に前提として読ませる</dd>
-    </dl>
-    <p>以前は Cursor も併用していましたが、使い分ける理由が見つからなかったため、現在は Claude Code に集約しています。Claude Code が利用上限で止まった際には、Codex に同じ資料（Obsidian の要件定義と作業記録）を読ませて開発を引き継いでおり、AI が読める形で残してあるため、ツールが変わっても作業を続けられます。</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <nav class="toc toc-footer" aria-label="目次（ページ下部）">
+    <nav class="toc toc-footer" aria-label="サイト内ページ（ページ下部）">
       <a href="#published">公開中の拡張機能<span class="n">3本</span></a>
-      <a href="#desktop">デスクトップアプリ<span class="n">デモ動画</span></a>
-      <a href="#inhouse">業務内製ツール<span class="n">GAS</span></a>
-      <a href="#ai">AI アシスタント<span class="n">Gem</span></a>
-      <a href="#knowledge">ナレッジの仕組み</a>
-      <a href="#planned">これから作りたいもの</a>
-      <a href="#approach">開発の進め方</a>
+      <a href="#desktop">デスクトップアプリ<span class="n">5本</span></a>
+      <a href="jitsumu.html">業務での実績</a>
+      <a href="approach.html">開発の進め方</a>
       <a href="#top">↑ ページの先頭へ</a>
     </nav>
     <p class="updated">最終更新：2026年8月</p>

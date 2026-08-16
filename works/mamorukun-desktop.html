@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>デスクトップ版まもるくん — 会話を止めずに、その場で AI へ質問できる | Nishira</title>
+<link rel="canonical" href="https://nishira.jp/works/mamorukun-desktop.html">
+<meta name="description" content="通話の書き起こしをマウスでなぞるだけで AI へ質問できる、ヘルプデスク向けデスクトップアプリ（Windows／Mac 対応）。">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="detail-header">
+  <div class="wrap">
+    <p class="brand"><a href="../">NISHIRA</a></p>
+    <a class="backlink" href="../#desktop">← 作品一覧へ</a>
+    <h1>デスクトップ版まもるくん</h1>
+    <p class="card-sub">会話を止めずに、その場で AI へ質問できる（Windows／Mac 対応）</p>
+    <img class="appicon" src="../assets/mamorukun.png" alt="まもるくんのアイコン">
+  </div>
+</header>
+
+<div class="detail-body">
+  <div class="wrap">
+
+    <!-- デモ映像を追加する場所（書き起こし→なぞって質問→回答表示、20〜30秒） -->
+
+    <div class="work">
+      <dl>
+        <dt>なりたち</dt><dd>Chrome 拡張として公開しているまもるくんを、ヘルプデスクの現場で使うことに絞って作り直したものです（Windows／Mac 対応）</dd>
+        <dt>目的</dt><dd>電話を保留にして調べる時間を短くすることと、通話後のログ作成を楽にすることです</dd>
+        <dt>モード</dt><dd>「ヘルプデスク用」と「通常の音声書き起こし」の 2 つから選べます。ヘルプデスク用は要約と対応履歴まで出す作りで、通常のほうは話した内容を読みやすく整えて書き出すだけの作りです</dd>
+        <dt>使い方</dt><dd>話した内容がその場で文字になります。<strong>その文字をマウスでなぞるだけで、なぞった部分が AI への質問ボックスに入ります。</strong>「こういうご質問ですね」とお客様に復唱しながらその部分をなぞれば、会話を止めずに AI へ質問を投げられます。打ち込む手間がありません。エラー画面を撮って貼り付ければ、AI がその画像を読んで対処方法を出してくれます</dd>
+        <dt>通話のあと</dt><dd>会話が終わると、要約が決まった形で出てきます。そのまま CRM に対応履歴として貼り付けられます</dd>
+        <dt>音声の扱い</dt><dd>お客様の声は最初から取り込まない作りにしています。マイクの取り込み口を分けてあるので、自分が話した内容だけが AI に渡ります。環境が許せばお客様側の音声も取る設計にできますが、今回はそこを外しました</dd>
+        <dt>使ったもの</dt><dd>Python、Google の音声認識、Gemini API</dd>
+        <dt>作った理由</dt><dd>いろいろな業務で一度 AI を挟むことが増えていますが、ヘルプデスクのように即時性が求められる場では、打ち込む時間そのものが邪魔になります。なぞるだけで質問できる形なら使えるのではないかと思って作りました</dd>
+      </dl>
+    </div>
+
+    <h2 class="plain">関連</h2>
+    <p class="note">元になった Chrome 拡張版は <a href="mamorukun.html">まもるくん</a> のページにあります。</p>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <nav class="toc toc-footer" aria-label="サイト内ページ">
+      <a href="../">作品一覧</a>
+      <a href="../jitsumu.html">業務での実績</a>
+      <a href="../approach.html">開発の進め方</a>
+    </nav>
+    <p>Nishira ／ お問い合わせ：<a href="mailto:info@nishira.jp">info@nishira.jp</a> ／ <a href="https://github.com/Goma-kun" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
