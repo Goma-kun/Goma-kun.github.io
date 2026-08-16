@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>外出前チェック — 遠隔開発の準備がそろっているかを1画面で | Nishira</title>
+<link rel="canonical" href="https://nishira.jp/works/gaishutsu-check.html">
+<meta name="description" content="外出先から自宅の開発環境につながる状態かを、1画面でまとめて確認する Mac アプリ。足りない設定はその場で直します。">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="detail-header">
+  <div class="wrap">
+    <p class="brand"><a href="../">NISHIRA</a></p>
+    <a class="backlink" href="../#desktop">← 作品一覧へ</a>
+    <h1>外出前チェック</h1>
+    <p class="card-sub">遠隔開発の準備がそろっているかを1画面で（Mac 用）</p>
+  </div>
+</header>
+
+<div class="detail-body">
+  <div class="wrap">
+
+    <div class="work">
+      <img class="shot" src="../assets/gaishutsu-check.png" alt="外出前チェックの画面。「外出して大丈夫です」の表示と、確認項目が OK 印つきで並んでいる" loading="lazy">
+      <p class="videonote">全部そろうと「外出して大丈夫です」。ブラウザを開いたままリロードすれば、その場で調べ直します。</p>
+      <dl>
+        <dt>なりたち</dt><dd>外出先から iPhone で自宅の Claude Code に指示を出せるようにしています（Claude Code の公式機能です）。ただ、つながる状態を保つには「Mac がスリープしない設定が生きているか」「遠隔操作の機能が有効か」など、そろっていないといけない条件がいくつもあり、ひとつでも欠けると外出先からは直せません</dd>
+        <dt>目的</dt><dd>出かける前の確認があちこちに散らばっていて、ひとつ確認し忘れたせいで外出先からつながらない、を防ぐことです</dd>
+        <dt>使い方</dt><dd>アプリをダブルクリックすると、必要な条件をまとめて調べて、結果を1画面に並べます。その場で直せる問題（スリープ防止が止まっている、など）は、直すかどうかをその場で聞いてきます</dd>
+        <dt>使ったもの</dt><dd>AppleScript、シェルスクリプト</dd>
+        <dt>作った理由</dt><dd>業務内製の日程調整ツールと同じ考え方です。あちこち見て回っていた確認を、ひとつの画面に集約すると、確認そのものが数秒で終わり、見落としもなくなります。自分の開発環境に対しても、業務と同じ型でツールを作っています</dd>
+      </dl>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <nav class="toc toc-footer" aria-label="サイト内ページ">
+      <a href="../">作品一覧</a>
+      <a href="../jitsumu.html">業務での実績</a>
+      <a href="../approach.html">開発の進め方</a>
+    </nav>
+    <p>Nishira ／ お問い合わせ：<a href="mailto:info@nishira.jp">info@nishira.jp</a> ／ <a href="https://github.com/Goma-kun" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
