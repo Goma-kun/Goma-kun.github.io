@@ -1,28 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <defs>
-    <linearGradient id="abg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f2f7ff"/>
-      <stop offset="1" stop-color="#d7e7ff"/>
+    <linearGradient id="bbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#152a54"/>
+      <stop offset="1" stop-color="#0a142e"/>
     </linearGradient>
-    <filter id="asoft" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="1.6"/>
-    </filter>
+    <linearGradient id="bgloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
   </defs>
-  <rect x="1" y="1" width="62" height="62" rx="15" fill="url(#abg)"/>
-  <path d="M19.70 49.06 L19.70 25.06 L39.70 49.06 L39.70 25.06" fill="none" stroke="#1b3fa0" stroke-opacity=".28" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#asoft)"/>
-  <path d="M25.50 41.34 L25.50 17.34 L45.50 41.34 L45.50 17.34" fill="none" stroke="#7ce0f8" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M25.00 41.72 L25.00 17.72 L45.00 41.72 L45.00 17.72" fill="none" stroke="#76d6f7" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M24.50 42.10 L24.50 18.10 L44.50 42.10 L44.50 18.10" fill="none" stroke="#70ccf6" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M24.00 42.48 L24.00 18.48 L44.00 42.48 L44.00 18.48" fill="none" stroke="#69c3f5" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M23.50 42.86 L23.50 18.86 L43.50 42.86 L43.50 18.86" fill="none" stroke="#63b9f4" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M23.00 43.24 L23.00 19.24 L43.00 43.24 L43.00 19.24" fill="none" stroke="#5daff3" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M22.50 43.62 L22.50 19.62 L42.50 43.62 L42.50 19.62" fill="none" stroke="#57a5f2" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M22.00 44.00 L22.00 20.00 L42.00 44.00 L42.00 20.00" fill="none" stroke="#509cf1" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M21.50 44.38 L21.50 20.38 L41.50 44.38 L41.50 20.38" fill="none" stroke="#4a92f0" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M21.00 44.76 L21.00 20.76 L41.00 44.76 L41.00 20.76" fill="none" stroke="#4488ef" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M20.50 45.14 L20.50 21.14 L40.50 45.14 L40.50 21.14" fill="none" stroke="#3e7eee" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M20.00 45.52 L20.00 21.52 L40.00 45.52 L40.00 21.52" fill="none" stroke="#3874ed" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M19.50 45.90 L19.50 21.90 L39.50 45.90 L39.50 21.90" fill="none" stroke="#316bec" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M19.00 46.28 L19.00 22.28 L39.00 46.28 L39.00 22.28" fill="none" stroke="#2b61eb" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M18.50 46.66 L18.50 22.66 L38.50 46.66 L38.50 22.66" fill="none" stroke="#2557ea" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="1" y="1" width="62" height="62" rx="15" fill="url(#bbg)"/>
+  <path d="M25.50 41.34 L25.50 17.34 L45.50 41.34 L45.50 17.34" fill="none" stroke="#8b5cf6" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M25.00 41.72 L25.00 17.72 L45.00 41.72 L45.00 17.72" fill="none" stroke="#8761f7" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24.50 42.10 L24.50 18.10 L44.50 42.10 L44.50 18.10" fill="none" stroke="#8466f7" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24.00 42.48 L24.00 18.48 L44.00 42.48 L44.00 18.48" fill="none" stroke="#806cf8" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23.50 42.86 L23.50 18.86 L43.50 42.86 L43.50 18.86" fill="none" stroke="#7c71f9" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23.00 43.24 L23.00 19.24 L43.00 43.24 L43.00 19.24" fill="none" stroke="#7876f9" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M22.50 43.62 L22.50 19.62 L42.50 43.62 L42.50 19.62" fill="none" stroke="#757bfa" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M22.00 44.00 L22.00 20.00 L42.00 44.00 L42.00 20.00" fill="none" stroke="#7180fa" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M21.50 44.38 L21.50 20.38 L41.50 44.38 L41.50 20.38" fill="none" stroke="#6d86fb" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M21.00 44.76 L21.00 20.76 L41.00 44.76 L41.00 20.76" fill="none" stroke="#6a8bfc" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20.50 45.14 L20.50 21.14 L40.50 45.14 L40.50 21.14" fill="none" stroke="#6690fc" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20.00 45.52 L20.00 21.52 L40.00 45.52 L40.00 21.52" fill="none" stroke="#6295fd" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M19.50 45.90 L19.50 21.90 L39.50 45.90 L39.50 21.90" fill="none" stroke="#5e9bfe" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M19.00 46.28 L19.00 22.28 L39.00 46.28 L39.00 22.28" fill="none" stroke="#5ba0fe" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18.50 46.66 L18.50 22.66 L38.50 46.66 L38.50 22.66" fill="none" stroke="#57a5ff" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1 16 a15 15 0 0 1 15-15 h32 a15 15 0 0 1 15 15 v10 q-31 8 -62 0 z" fill="url(#bgloss)"/>
 </svg>
