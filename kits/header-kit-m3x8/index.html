@@ -163,10 +163,13 @@ def draw_line(segs, size, x, y):
 
 y = 40
 if a.band:
-    fb = ImageFont.truetype(a.font, 30); tb = d.textbbox((0, 0), a.band, font=fb)
-    d.rounded_rectangle((32, 32, 48 + tb[2] - tb[0] + 16, 40 + tb[3] - tb[1] + 16), radius=10, fill=(255, 255, 255))
-    d.text((48, 38), a.band, font=fb, fill=stroke)
-    y = 110
+    # 帯: 文字の実際の描画範囲（bbox）を測ってから、上下左右に同じ余白で白い角丸を敷く
+    fb = ImageFont.truetype(a.font, 30)
+    bx, by, pad = 48, 44, 12
+    l, t, r, b = d.textbbox((bx, by), a.band, font=fb)   # 文字が実際に占める範囲
+    d.rounded_rectangle((l - pad - 4, t - pad, r + pad + 4, b + pad), radius=10, fill=(255, 255, 255))
+    d.text((bx, by), a.band, font=fb, fill=stroke)
+    y = b + pad + 18
 if a.line1:
     y = draw_line([(a.line1, a.color1)], a.size1, 44, y)
 if a.line2:
@@ -178,7 +181,8 @@ if a.line2:
         segs = [(a.line2, a.color2)]
     y = draw_line(segs, a.size2, 44, y + 2)
 pathlib.Path(a.dst).parent.mkdir(parents=True, exist_ok=True)
-im.save(a.dst, quality=95); print("saved", a.dst)</pre>
+im.save(a.dst, quality=95); print("saved", a.dst)
+</pre>
   <div class="bar">
     <button id="copy2" type="button">依頼文をコピー</button>
   </div>
