@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>依頼文のコピー用ページ（Chromeウェブストア申請キット）</title>
+<style>
+  body { font-family: "Hiragino Sans", "Noto Sans JP", sans-serif; margin: 0; padding: 24px 16px 60px; background: #f6f7f9; color: #1a1f2b; }
+  main { max-width: 880px; margin: 0 auto; }
+  h1 { font-size: 20px; margin: 0 0 8px; }
+  p { line-height: 1.8; }
+  .bar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 16px 0; }
+  button { font-size: 16px; padding: 12px 20px; border: 0; border-radius: 10px; background: #1f3b73; color: #fff; cursor: pointer; }
+  button:active { transform: translateY(1px); }
+  #done { color: #1f6f3b; font-weight: 600; }
+  pre { background: #fff; border: 1px solid #d8dce3; border-radius: 10px; padding: 16px; overflow: auto; font-size: 13px; line-height: 1.6; white-space: pre; }
+  .note { font-size: 14px; color: #555; }
+</style>
+</head>
+<body>
+<main>
+  <h1>依頼文のコピー用ページ</h1>
+  <p>note の記事「Chromeウェブストアの申請を、下書きまで Claude Code に任せるための手順書とツール」で使う依頼文です。下のボタンを押すと、枠の中の文章（ツールのコードを含む）が全部コピーされます。コピーしたら、Claude Code の文章を入れる欄に貼ってください。</p>
+  <p class="note">【 】で囲んだ 5 か所は、貼る前か貼った後に、ご自身のものに置き換えてください。置き換え方は記事の 4 章にあります。</p>
+  <div class="bar">
+    <button id="copy" type="button">依頼文をコピー</button>
+    <span id="done" aria-live="polite"></span>
+  </div>
+  <pre id="src">Chromeウェブストアの申請を、下書き保存まで進めてください。私はプログラマーではないので、報告は平易な日本語でお願いします。
+
+## 今回の申請
+- 種類: 【更新 or 新規】
+- 拡張機能の名前: 【拡張名】
+- 新しいバージョン: 【バージョン】
+- zip の場所: 【zipのパス】
+- （新規のときだけ）説明文の材料がある場所: 【READMEやストア用文章のパス】
+
+## 全体の決まり
+- 審査のため送信 のボタンは絶対に押さないでください。下書きとして保存する で止めて、私に報告してください
+- ブラウザの操作は、Claude in Chrome のような拡張機能ではできません（Chrome がウェブストアの画面への拡張機能からの操作を禁止しているためです）。代わりに、下にあるツール cdp.mjs を使って、Chrome DevTools Protocol 経由で操作してください
+- 私が Terminal で実行する必要があるコマンドは、コードの枠に入れて、1 行で、そのままコピーして貼れる形で出してください
+
+## 手順
+1. Node.js 22 以降が入っているか確認してください。無ければ、入れ方を平易に案内して止まってください
+2. この依頼文の末尾にある cdp.mjs のコードを ~/cws-tools/cdp.mjs に保存してください（フォルダが無ければ作る。すでに同じ内容があれば上書きしなくてよい）
+3. 私の Chrome のプロファイルのうち、ウェブストアに使っているものを調べてください。~/Library/Application Support/Google/Chrome/Local State の profile.info_cache を読めば、プロファイル名とアカウントの対応が分かります。複数あれば、どれを使うか私に聞いてください
+4. 作業専用の Chrome を起動するコマンドを作って、私に渡してください。中身は次のとおりです。
+   - /tmp/cws-work を作り、Local State とそのプロファイルのフォルダをそこへコピーする
+   - /Applications/Google Chrome.app/Contents/MacOS/Google Chrome を --user-data-dir=/tmp/cws-work --profile-directory="&lt;プロファイル名&gt;" --remote-debugging-port=9444 で起動する
+   - 私がこれを Terminal で実行します。実行したあと、新しいウィンドウで Google にサインインしてから「入りました」と伝えます。それまで待ってください
+5. 私の「入りました」の合図のあと、node ~/cws-tools/cdp.mjs goto でデベロッパーダッシュボードを開き、shot でスクリーンショットを撮って、サインインできているか確認してください。できていなければ、私に状況を伝えてください
+6. 更新の場合: 対象の拡張機能の パッケージ のタブを開き、「新しいパッケージをアップロード」を押してから、cdp.mjs の upload で input[type=file] に zip を渡してください（ファイル選択のダイアログは開かせない）。ドラフトのバージョンが新しい番号になったことを確認してください
+   新規の場合: 一覧で「新しいアイテム」を押し、同じ方法で zip を渡してください。この時点で拡張 ID が決まるので、URL から控えて報告してください。そのあと、掲載情報（名前・短い説明・詳しい説明の日本語と英語・カテゴリ・言語）、画像（スクリーンショット・プロモタイル）、プライバシー（単一用途の説明・権限ごとの理由・データ使用の表明）を、材料から文章を作って埋めてください。textarea は native setter と input イベントで書き換え、カテゴリと言語は role=combobox をクリックして role=option を選び、画像は input[type=file] に印を付けてから upload で渡してください
+7. 落とし穴の確認を必ずしてください
+   - リモートコードの設問が「いいえ」になっているか（新規だと初期値が「はい」になっています。必ず「いいえ」に変えてください）
+   - 英語の掲載文の欄に日本語が混ざっていないか
+   - 権限の説明が、今回の変更と食い違っていないか
+   - 審査員向けテスト手順の欄（URL は …/&lt;拡張ID&gt;/testcredentials）に文を入れる場合は 500 文字以内にすること。超えた分は警告なしに消えます。入れたら文字数と末尾を読み返してください
+8. 「下書きとして保存する」を押し、そのボタンが押せない状態（disabled）になったことで保存を確認してください。保存しました、のような表示より確実です
+9. 私への報告: 何をアップロードしたか、確認した項目の結果、拡張 ID（新規のとき）、最後のスクリーンショット。送信はしていないことを明記してください
+10. 私が「後片付けをお願いします」と言ったら、remote-debugging-port=9444 の Chrome を終了し、/tmp/cws-work を削除してください。普段の Chrome には触らないでください
+
+## うまくいかないとき
+- cdp.mjs が「ページが見つからない」と言う場合は、作業専用の Chrome が起動していないか、サインインの途中です。私に平易に状況を伝えてください
+- upload でセレクタに合う要素が無いと言われる場合は、「新しいパッケージをアップロード」を押す前に走らせています。押してから渡してください
+- 画面の文言やボタンの位置が、この依頼文と違っていたら、スクリーンショットを撮って現在の画面に合わせて進めてください。合わせ方が分からなければ、スクリーンショットを見せて私に聞いてください
+
+## ツール cdp.mjs（~/cws-tools/cdp.mjs に保存するコード）
+// CWS devconsole 操作用の小さなCDPクライアント
+// 使い方: node cdp.mjs &lt;cmd&gt; [args...]
+//   shot &lt;出力png&gt;                … スクリーンショット
+//   eval &lt;JS式&gt;                    … ページでJSを評価してJSONで出力
+//   click &lt;x&gt; &lt;y&gt;                  … クリック（CSSピクセル座標）
+//   type &lt;text&gt;                    … テキスト入力（フォーカス中の要素へ）
+//   key &lt;key&gt;                      … キー押下（Enter / Tab など）
+//   upload &lt;CSSセレクタ&gt; &lt;ファイル&gt;… input[type=file] にファイルを渡す
+//   goto &lt;url&gt;                     … ページ遷移
+import fs from 'node:fs';
+
+const PORT = 9444;
+const [cmd, ...args] = process.argv.slice(2);
+
+const targets = await (await fetch(`http://127.0.0.1:${PORT}/json`)).json();
+const page = targets.find((t) =&gt; t.type === 'page' &amp;&amp; t.url.includes('chrome.google.com'))
+  || targets.find((t) =&gt; t.type === 'page');
+if (!page) { console.error('NG: ページが見つからない'); process.exit(1); }
+
+const ws = new WebSocket(page.webSocketDebuggerUrl);
+await new Promise((ok, ng) =&gt; { ws.onopen = ok; ws.onerror = ng; });
+let seq = 0;
+const pending = new Map();
+ws.onmessage = (ev) =&gt; {
+  const msg = JSON.parse(ev.data);
+  if (msg.id &amp;&amp; pending.has(msg.id)) {
+    const { ok, ng } = pending.get(msg.id);
+    pending.delete(msg.id);
+    msg.error ? ng(new Error(msg.error.message)) : ok(msg.result);
+  }
+};
+function send(method, params = {}) {
+  const id = ++seq;
+  return new Promise((ok, ng) =&gt; {
+    pending.set(id, { ok, ng });
+    ws.send(JSON.stringify({ id, method, params }));
+  });
+}
+
+if (cmd === 'shot') {
+  const [out] = args;
+  const { data } = await send('Page.captureScreenshot', { format: 'png' });
+  fs.writeFileSync(out, Buffer.from(data, 'base64'));
+  console.log('saved:', out);
+} else if (cmd === 'eval') {
+  const r = await send('Runtime.evaluate', { expression: args[0], awaitPromise: true, returnByValue: true });
+  if (r.exceptionDetails) { console.error('EXC:', r.exceptionDetails.exception?.description || r.exceptionDetails.text); process.exit(1); }
+  console.log(JSON.stringify(r.result.value));
+} else if (cmd === 'click') {
+  const [x, y] = args.map(Number);
+  for (const type of ['mousePressed', 'mouseReleased']) {
+    await send('Input.dispatchMouseEvent', { type, x, y, button: 'left', clickCount: 1 });
+  }
+  console.log('clicked', x, y);
+} else if (cmd === 'type') {
+  await send('Input.insertText', { text: args.join(' ') });
+  console.log('typed');
+} else if (cmd === 'key') {
+  const key = args[0];
+  const codes = { Enter: 13, Tab: 9, Escape: 27 };
+  const code = codes[key] ?? 0;
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', key, windowsVirtualKeyCode: code, nativeVirtualKeyCode: code });
+  await send('Input.dispatchKeyEvent', { type: 'keyUp', key, windowsVirtualKeyCode: code, nativeVirtualKeyCode: code });
+  console.log('key', key);
+} else if (cmd === 'upload') {
+  const [selector, ...files] = args;
+  const doc = await send('DOM.getDocument', {});
+  const { nodeId } = await send('DOM.querySelector', { nodeId: doc.root.nodeId, selector });
+  if (!nodeId) { console.error('NG: セレクタに合う要素が無い:', selector); process.exit(1); }
+  await send('DOM.setFileInputFiles', { files, nodeId });
+  console.log('uploaded:', files.join(', '));
+} else if (cmd === 'goto') {
+  await send('Page.navigate', { url: args[0] });
+  console.log('navigated');
+} else {
+  console.error('NG: 不明なコマンド', cmd);
+  process.exit(1);
+}
+ws.close();</pre>
+  <div class="bar">
+    <button id="copy2" type="button">依頼文をコピー</button>
+  </div>
+  <p class="note">コピーがうまくいかないときは、枠の中をクリックしてから、command と A を同時に押して全部を選び、command と C でコピーしてください。</p>
+</main>
+<script>
+(function () {
+  var src = document.getElementById('src');
+  var done = document.getElementById('done');
+  function copy() {
+    var text = src.textContent;
+    function ok() { done.textContent = 'コピーしました。Claude Code に貼ってください。'; }
+    function ng() { done.textContent = 'コピーできませんでした。枠の中を全部選んでコピーしてください。'; }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(ok, ng);
+    } else {
+      var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy') ? ok() : ng(); } catch (e) { ng(); }
+      document.body.removeChild(ta);
+    }
+  }
+  document.getElementById('copy').addEventListener('click', copy);
+  document.getElementById('copy2').addEventListener('click', copy);
+})();
+</script>
+</body>
+</html>
