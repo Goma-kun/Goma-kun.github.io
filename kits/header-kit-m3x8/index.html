@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>依頼文のコピー用ページ（見出し画像キット）</title>
+<style>
+  body { font-family: "Hiragino Sans", "Noto Sans JP", sans-serif; margin: 0; padding: 24px 16px 60px; background: #f6f7f9; color: #1a1f2b; }
+  main { max-width: 880px; margin: 0 auto; }
+  h1 { font-size: 20px; margin: 0 0 8px; }
+  p { line-height: 1.8; }
+  .bar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 16px 0; }
+  button { font-size: 16px; padding: 12px 20px; border: 0; border-radius: 10px; background: #1f3b73; color: #fff; cursor: pointer; }
+  button:active { transform: translateY(1px); }
+  #done { color: #1f6f3b; font-weight: 600; }
+  pre { background: #fff; border: 1px solid #d8dce3; border-radius: 10px; padding: 16px; overflow: auto; font-size: 13px; line-height: 1.6; white-space: pre; }
+  .note { font-size: 14px; color: #555; }
+</style>
+</head>
+<body>
+<main>
+  <h1>依頼文のコピー用ページ</h1>
+  <p>note の記事「自分のキャラクターで、毎回同じ顔の見出し画像を Claude Code に作らせる」で使う依頼文です。下のボタンを押すと、枠の中の文章（ツールのコードを含む）が全部コピーされます。コピーしたら、Claude Code の文章を入れる欄に貼ってください。</p>
+  <p class="note">【 】で囲んだ場所は、貼る前か貼った後に、ご自身のものに置き換えてください。置き換え方は記事の 5 章にあります。</p>
+  <div class="bar">
+    <button id="copy" type="button">依頼文をコピー</button>
+    <span id="done" aria-live="polite"></span>
+  </div>
+  <pre id="src">自分のキャラクターで、毎回同じ顔の記事の見出し画像を作る仕組みを用意してください。私はプログラマーではないので、報告は平易な日本語でお願いします。
+
+## 今回
+- 作りたいもの: 【設定画 or 見出し画像】
+- キャラクターの説明（設定画を作るとき）: 【説明。写真があればそのパスも】
+- 文字（見出し画像を作るとき）: 1 行目「【9 文字まで】」 2 行目「【7 文字まで】」 色を変える語「【1 語か空欄】」 左上の帯「【連載名など。空欄可】」
+- 表情: 【疑い／困り／驚き／不満／満足／真顔 のどれか、または一言】
+- 小物: 【1 つだけ、または なし】
+- 背景: 【空欄なら濃い紺から紫のグラデーション】
+
+## 全体の決まり
+- API キーは ~/.config/header-kit/gemini_api_key にあります。中身を表示したり、チャットに書いたりしないでください。無ければ、Google AI Studio で作って Terminal の 1 行で保存する手順を私に案内して止まってください
+- 画像の生成は、下にあるツール header_gen.py で行います。文字乗せは header_text.py で行います
+- 1 枚あたり約 6 円かかります。1 回の依頼で生成は 6 枚までにし、超えそうなら私に聞いてください
+- 出来た画像は必ず私に見せてください（画像ファイルのパスを示す）
+
+## 最初の 1 回（準備）
+1. python3 と Pillow が入っているか確認し、無ければ pip3 install pillow を実行してください（止められたら、私が Terminal で実行する形で案内してください）
+2. この依頼文の末尾にある 2 つのツールを ~/header-kit/header_gen.py と ~/header-kit/header_text.py に保存してください（すでに同じ内容があれば上書き不要）
+3. ~/header-kit/samples/ を作ってください。設定画と出力はここに溜めます
+
+## 設定画を作るとき
+1. 私の説明（と写真）から、次の型で依頼文を作って header_gen.py で 1 枚生成してください（ASPECT=16:9）
+   「キャラクターの設定画を 1 枚描いてください。キャラクターは【説明】。3DCG のやわらかい質感で、輪郭線は使いません。横長 1 枚の中に、同じキャラクターを 6 つ並べます。左上から順に、正面の真顔、正面の笑顔、目を細めた疑いの顔、眉を八の字にした困り顔、目を丸くした驚き顔、横向きの立ち姿。背景は薄いグレーのベタ 1 色で、文字やグリッド線は入れません。6 つとも顔の作りと色が完全に同じになるようにしてください。」
+2. 出来た画像を私に見せてください。ポーズが 6 つ揃っていなくても、顔と色が揃っていれば合格です。私が直したい点を言ったら、その 1 点だけを足して作り直してください（2 回まで）
+3. 合格した設定画を ~/header-kit/samples/sheet.png として保存し、以後の見出し画像の参照にします
+
+## 見出し画像を作るとき
+1. 次の型で依頼文を作り、設定画 sheet.png を参照画像にして、header_gen.py で 2 枚生成してください（ASPECT=16:9。2 枚は同じ依頼文でよい。同時に実行してよい）
+   「添付した画像は【キャラクター名】の設定画です。顔の作り、目の色、毛の色と模様、3DCG のやわらかい質感は設定画のとおり守り、設定画の背景やグリッドや並びは再現しないでください。横長の記事の見出し画像を 1 枚描いてください。コマ割りにせず 1 つの場面を 1 枚で。背景は部屋や家具や物を一切描かず、【背景の指定。既定は「濃い紺から紫へなめらかに変わる、ピントの合っていないやわらかいグラデーションの光だけ」】にします。画面の右 4 割に、【名前】の胸から上を大きく配置し、右肩が画面の端で少し切れるくらい寄せます。表情は【表情を具体的に。例: 目を細めて左下を横目で見る疑いの顔】です。設定画の笑顔は使いません。【小物があれば: 手前の画面の下端に【小物】を 1 つだけ置きます。】画面の左 6 割の上半分は、あとで大きな文字を入れるので何も描かず背景のまま空けてください。文字・数字・ロゴは一切入れません。ライティングは正面やや上からの白い光で影は軽く、輪郭線は使いません。」
+2. 2 枚それぞれに header_text.py で文字を乗せてください。帯は --band、1 行目は --line1、2 行目は --line2、色を変える語は --accent。文字の大きさは 1 行目 96〜104、2 行目 130〜150 の範囲で、文字の右端がキャラクターに重ならないように選んでください（重なるなら小さく）
+3. 文字入りの 2 枚を私に見せてください。私が選んだら、そのファイルの場所を報告して終わりです。文字なしの元画像も samples に残してください
+
+## うまくいかないとき
+- 画像が返らない: 依頼文の末尾に「必ず画像そのものを返してください」を足して再実行
+- 背景に部屋や物が描かれた: 「背景は部屋も物も描かず、光のグラデーションだけ」を先頭に移して再実行
+- 表情が変わらない: 文章で直すより、設定画の中の目的の表情の位置（例: 左から 3 番目）を指して「この顔に」と頼む
+- 文字が顔に重なる: 2 行目を 7 文字以内に短くするか、--size2 を小さくする
+
+## ツール 1: header_gen.py（~/header-kit/header_gen.py に保存するコード）
+#!/usr/bin/env python3
+"""Gemini で画像を 1 枚作る（依存ゼロ・標準ライブラリのみ）。
+
+使い方:
+  python3 header_gen.py "&lt;依頼文&gt;" &lt;出力ファイル.png&gt; [参照画像1 参照画像2 ...]
+環境変数:
+  ASPECT=16:9   出力の縦横比（既定 16:9。設定画は 16:9、正方形なら 1:1）
+  MODEL=...     既定 gemini-2.5-flash-image
+API キーは ~/.config/header-kit/gemini_api_key に 1 行で置く（Claude Code が作る）
+"""
+import base64, json, os, pathlib, sys, time, urllib.request, urllib.error
+
+def main():
+    if len(sys.argv) &lt; 3:
+        sys.exit(__doc__)
+    prompt, out = sys.argv[1], pathlib.Path(sys.argv[2])
+    refs = [pathlib.Path(p) for p in sys.argv[3:]]
+    keyfile = pathlib.Path.home() / ".config/header-kit/gemini_api_key"
+    if not keyfile.exists():
+        sys.exit(f"NG: API キーがありません: {keyfile}")
+    key = keyfile.read_text().strip()
+    model = os.environ.get("MODEL", "gemini-2.5-flash-image")
+    parts = [{"text": prompt}]
+    for r in refs:
+        if not r.exists():
+            sys.exit(f"NG: 参照画像が見つかりません: {r}")
+        mime = "image/png" if r.suffix.lower() == ".png" else "image/jpeg"
+        parts.append({"inline_data": {"mime_type": mime, "data": base64.b64encode(r.read_bytes()).decode()}})
+    gen = {"responseModalities": ["IMAGE", "TEXT"], "imageConfig": {"aspectRatio": os.environ.get("ASPECT", "16:9")}}
+    body = {"contents": [{"role": "user", "parts": parts}], "generationConfig": gen}
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+    req = urllib.request.Request(url, data=json.dumps(body).encode(), headers={"Content-Type": "application/json", "x-goog-api-key": key})
+    t = time.time()
+    try:
+        resp = json.load(urllib.request.urlopen(req, timeout=300))
+    except urllib.error.HTTPError as e:
+        sys.exit(f"NG: HTTP {e.code} {e.read().decode()[:600]}")
+    saved = 0
+    for c in resp.get("candidates", []):
+        for part in c.get("content", {}).get("parts", []):
+            if "text" in part:
+                print("Gemini:", part["text"][:200].replace("
+", " "))
+            if "inlineData" in part and saved == 0:
+                out.parent.mkdir(parents=True, exist_ok=True)
+                out.write_bytes(base64.b64decode(part["inlineData"]["data"]))
+                saved += 1
+                print("SAVED", out)
+    if saved == 0:
+        sys.exit("NG: 画像が返ってきませんでした。依頼文の末尾に「必ず画像そのものを返してください」を足して再実行してください。 " + json.dumps(resp, ensure_ascii=False)[:400])
+    print(f"{time.time()-t:.0f}s")
+
+if __name__ == "__main__":
+    main()
+
+## ツール 2: header_text.py（~/header-kit/header_text.py に保存するコード）
+#!/usr/bin/env python3
+"""見出し画像に、左上の帯と 2 行の大きな文字を乗せて、note 用の 1280×670 に切り出す。
+
+使い方:
+  python3 header_text.py &lt;元画像&gt; &lt;出力.png&gt; --band "帯の文字" --line1 "1行目" --line2 "2行目" [--color2 "#FFD600"] [--accent "面倒" --accent-color "#E53935"] [--size1 100 --size2 150] [--anchor 1.0]
+  --accent は 2 行目の中で色を変えたい語（1 語だけ）。--anchor は切り出しの位置（1.0=下を残して上を切る、0=上を残す、0.5=中央）
+必要なもの: Pillow（Claude Code に `pip3 install pillow` を頼む）。フォントは Mac のヒラギノ角ゴシック W9（無ければ --font でパスを指定）
+"""
+import argparse, pathlib
+from PIL import Image, ImageDraw, ImageFont
+
+ap = argparse.ArgumentParser()
+ap.add_argument("src"); ap.add_argument("dst")
+ap.add_argument("--band", default=""); ap.add_argument("--line1", default=""); ap.add_argument("--line2", default="")
+ap.add_argument("--color1", default="#FFFFFF"); ap.add_argument("--color2", default="#FFD600")
+ap.add_argument("--accent", default=""); ap.add_argument("--accent-color", default="#E53935")
+ap.add_argument("--size1", type=int, default=100); ap.add_argument("--size2", type=int, default=150)
+ap.add_argument("--anchor", type=float, default=1.0)
+ap.add_argument("--font", default="/System/Library/Fonts/ヒラギノ角ゴシック W9.ttc")
+ap.add_argument("--stroke", default="#1B2A4A")
+a = ap.parse_args()
+
+def hexc(s): s = s.lstrip("#"); return tuple(int(s[i:i+2], 16) for i in (0, 2, 4))
+W, H = 1280, 670
+im = Image.open(a.src).convert("RGB")
+im = im.resize((W, round(im.height * W / im.width)), Image.LANCZOS)
+top = round((im.height - H) * a.anchor)
+im = im.crop((0, top, W, top + H))
+d = ImageDraw.Draw(im)
+stroke = hexc(a.stroke)
+
+def draw_line(segs, size, x, y):
+    f = ImageFont.truetype(a.font, size); sw = max(4, size // 11); cx = x
+    for text, color in segs:
+        d.text((cx, y), text, font=f, fill=hexc(color), stroke_width=sw, stroke_fill=stroke)
+        cx += d.textlength(text, font=f) + sw
+    return y + size + sw * 2
+
+y = 40
+if a.band:
+    fb = ImageFont.truetype(a.font, 30); tb = d.textbbox((0, 0), a.band, font=fb)
+    d.rounded_rectangle((32, 32, 48 + tb[2] - tb[0] + 16, 40 + tb[3] - tb[1] + 16), radius=10, fill=(255, 255, 255))
+    d.text((48, 38), a.band, font=fb, fill=stroke)
+    y = 110
+if a.line1:
+    y = draw_line([(a.line1, a.color1)], a.size1, 44, y)
+if a.line2:
+    if a.accent and a.accent in a.line2:
+        pre, post = a.line2.split(a.accent, 1)
+        segs = [(pre, a.color1), (a.accent, a.accent_color), (post, a.color1)]
+        segs = [s for s in segs if s[0]]
+    else:
+        segs = [(a.line2, a.color2)]
+    y = draw_line(segs, a.size2, 44, y + 2)
+pathlib.Path(a.dst).parent.mkdir(parents=True, exist_ok=True)
+im.save(a.dst, quality=95); print("saved", a.dst)</pre>
+  <div class="bar">
+    <button id="copy2" type="button">依頼文をコピー</button>
+  </div>
+  <p class="note">コピーがうまくいかないときは、枠の中をクリックしてから、command と A を同時に押して全部を選び、command と C でコピーしてください。</p>
+</main>
+<script>
+(function () {
+  var src = document.getElementById('src');
+  var done = document.getElementById('done');
+  function copy() {
+    var text = src.textContent;
+    function ok() { done.textContent = 'コピーしました。Claude Code に貼ってください。'; }
+    function ng() { done.textContent = 'コピーできませんでした。枠の中を全部選んでコピーしてください。'; }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(ok, ng);
+    } else {
+      var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy') ? ok() : ng(); } catch (e) { ng(); }
+      document.body.removeChild(ta);
+    }
+  }
+  document.getElementById('copy').addEventListener('click', copy);
+  document.getElementById('copy2').addEventListener('click', copy);
+})();
+</script>
+</body>
+</html>
