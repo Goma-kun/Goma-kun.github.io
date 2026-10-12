@@ -110,8 +110,7 @@ def main():
     for c in resp.get("candidates", []):
         for part in c.get("content", {}).get("parts", []):
             if "text" in part:
-                print("Gemini:", part["text"][:200].replace("
-", " "))
+                print("Gemini:", part["text"][:200].replace("\n", " "))
             if "inlineData" in part and saved == 0:
                 out.parent.mkdir(parents=True, exist_ok=True)
                 out.write_bytes(base64.b64decode(part["inlineData"]["data"]))
