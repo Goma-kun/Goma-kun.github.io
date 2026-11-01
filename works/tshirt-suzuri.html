@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1973 のポーズ T シャツ — AI でデザインして SUZURI で販売 | Nishira</title>
+<link rel="canonical" href="https://nishira.jp/works/tshirt-suzuri">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nishira.jp/works/tshirt-suzuri">
+<meta property="og:site_name" content="Nishira">
+<meta property="og:title" content="1973 のポーズ T シャツ — AI でデザインして SUZURI で販売">
+<meta property="og:description" content="猫が 1973 年のあのポーズをしている T シャツ。Claude Code と Gemini で一晩でデザインし、SUZURI の API で 28 点を登録して販売しています。作り方と考えたことをまとめました。">
+<meta property="og:image" content="https://nishira.jp/assets/ogp-brand.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nishira — 現場の困りごとを、AI を使って動くツールに。">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="猫が 1973 年のあのポーズをしている T シャツ。Claude Code と Gemini で一晩でデザインし、SUZURI の API で 28 点を登録して販売しています。作り方と考えたことをまとめました。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/style.css?v=20260819">
+</head>
+<body>
+
+<header class="detail-header">
+  <div class="wrap">
+    <p class="brand"><a href="../">NISHIRA</a></p>
+    <a class="backlink" href="../">← トップへ戻る</a>
+    <h1>1973 のポーズ T シャツ</h1>
+    <p class="card-sub">AI でデザインして、SUZURI で販売中 ／ T シャツ 28 点</p>
+    <img class="appicon" src="../assets/tshirt-icon.png" alt="顔に稲妻のメイクをした猫のイラスト">
+  </div>
+</header>
+
+<div class="detail-body">
+  <div class="wrap">
+
+    <div class="work">
+      <img class="shot" src="../assets/tshirt-lineup.jpg" alt="白と黒の T シャツに、稲妻を背に両手で目の周りに輪を作る猫が印刷されたもの。毛色違いで 7 種類" loading="lazy">
+      <p class="videonote">スタンダード T シャツの 7 点。うちの猫のごまくんと、赤い逆毛の猫が 6 毛色（白・襟つき・三毛・黒・茶トラ・ハチワレ）。後ろの稲妻は黄色から赤へのグラデーションです。</p>
+    </div>
+
+    <p class="note">猫が 1973 年のあのポーズをしている T シャツです。両手の甲をこちらに向けて、指で輪っかを作って目に当てて、肘は高く。デザインは Claude Code と Gemini に手伝ってもらい、土曜日の夜から日曜日の朝にかけて作りました。SUZURI への登録も API で行い、スタンダード・全面プリント・黒い全面・全身の 4 種類 × 7 毛色の 28 点を並べています。受注生産なので在庫はなく、1 枚から買えます。</p>
+
+    <div class="work" style="display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start">
+      <figure style="flex:1 1 280px;margin:0">
+        <img class="shot" style="max-width:100%" src="../assets/tshirt-black.jpg" alt="黒地の全面プリント T シャツ。前面と背面に大きな稲妻と猫" loading="lazy">
+        <figcaption class="videonote">黒い全面プリント版。首元から裾まで稲妻が届き、背中にも同じ稲妻が入ります。SUZURI 側で生成された見本です。</figcaption>
+      </figure>
+      <figure style="flex:1 1 280px;margin:0">
+        <img class="shot" style="max-width:100%" src="../assets/tshirt-progress.jpg" alt="猫のイラストが墨絵から 3D へ、手の向きや目や肘が少しずつ直っていく 8 枚の変遷" loading="lazy">
+        <figcaption class="videonote">できあがるまでの変遷。墨絵で手つきを確かめ、3D にして、手の向き・目・肘・稲妻の形を 30 回ほど直しました。</figcaption>
+      </figure>
+    </div>
+
+    <h2 class="plain">どう作ったか</h2>
+    <ul class="points">
+      <li>猫の絵は Gemini の画像生成で描きました。3D のごまくんの設定画と、ポーズの参考画像を渡して、「ここだけ直して」を 30 回ほど繰り返しています</li>
+      <li>稲妻は Claude Code が SVG で描き、印刷用の大きさ（3307×3898 ピクセル）に猫と合成しました。言葉で 10 回伝えても合わなかった稲妻の形は、参考画像を 1 枚渡したら一発で合いました</li>
+      <li>全面プリント版は、SUZURI の公式テンプレート（袖まで含めた横長の型紙）の「切れない範囲」を自動で測って、その中に最大の大きさで置いています</li>
+      <li>SUZURI への登録は API で行いました。図案と商品を一度に作り、SUZURI 側で生成された着用画像を白と黒で確かめてから公開しています</li>
+      <li>毛色違いは、1 匹できたあとに「同じ猫を三毛に」「黒猫に」と頼んで増やしました。立ち姿の全身版も同じやり方です</li>
+      <li>値段のうち私の取り分は 1 枚 700 円です。残りは SUZURI の材料費・印刷代・手数料になります</li>
+    </ul>
+
+    <p class="note">※ 名前やロゴは使わず、ポーズと雰囲気だけを自作の絵で再現しています。AI で作ったデザインをそのまま売るのではなく、「違う」と言い続けて自分の好みに寄せていく工程が、今回いちばん時間をかけたところです。</p>
+
+    <div class="chips"><span class="chip">T シャツ</span><span class="chip">SUZURI</span><span class="chip">Gemini 画像生成</span><span class="chip">Claude Code</span><span class="chip">受注生産</span></div>
+
+    <div class="links">
+      <a class="btn btn-primary" href="https://suzuri.jp/NISHIRA" target="_blank" rel="noopener noreferrer">SUZURI で見る</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <nav class="toc toc-footer" aria-label="サイト内ページ">
+      <a href="../">トップ</a>
+      <a href="../jitsumu.html">業務での実績</a>
+      <a href="../approach.html">開発の進め方</a>
+    </nav>
+    <p>Nishira ／ お問い合わせ：<a href="mailto:info@nishira.jp">info@nishira.jp</a> ／ <a href="https://github.com/Goma-kun" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+  </div>
+</footer>
+
+<!-- Cloudflare Web Analytics -->
+<!-- 自分のアクセスを数えたくないブラウザでは /?analytics=off を一度開く（戻すときは ?analytics=on） -->
+<script>
+(function () {
+  var KEY = 'nishira-analytics-optout';
+  var off = false;
+  try {
+    var v = new URLSearchParams(location.search).get('analytics');
+    if (v === 'off') {
+      localStorage.setItem(KEY, '1');
+      notify('このブラウザからのアクセスは計測しません');
+    } else if (v === 'on') {
+      localStorage.removeItem(KEY);
+      notify('このブラウザからのアクセスを計測します');
+    }
+    off = localStorage.getItem(KEY) === '1';
+  } catch (e) {}
+  if (off) return;
+  var s = document.createElement('script');
+  s.type = 'module';
+  s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  s.setAttribute('data-cf-beacon', '{"token": "a974a07f0be24434a4a464e268910108"}');
+  document.head.appendChild(s);
+
+  function notify(msg) {
+    var d = document.createElement('div');
+    d.textContent = '✓ ' + msg;
+    d.setAttribute('role', 'status');
+    d.title = 'クリックで閉じます';
+    d.style.cssText = 'position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:99999;'
+      + 'max-width:calc(100vw - 32px);box-sizing:border-box;text-align:center;cursor:pointer;'
+      + 'background:var(--fg,#1c1b19);color:var(--bg,#fbfbfa);'
+      + 'padding:14px 24px;border-radius:14px;'
+      + 'font:700 15px/1.5 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;'
+      + 'box-shadow:0 12px 32px -8px rgba(0,0,0,.55);opacity:1;transition:opacity .25s;';
+    document.body.appendChild(d);
+    var timer = setTimeout(close, 6000);
+    d.addEventListener('click', function () { clearTimeout(timer); close(); });
+    function close() {
+      d.style.opacity = '0';
+      setTimeout(function () { d.remove(); }, 300);
+    }
+  }
+})();
+</script>
+<!-- End Cloudflare Web Analytics -->
+<script src="/assets/track.js" defer></script>
+</body>
+</html>
